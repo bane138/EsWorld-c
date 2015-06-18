@@ -1,0 +1,6 @@
+project(World001)
+find_package(SDL2_image REQUIRED)
+include_directories(${SDL2_IMAGE_INCLUDE_DIR})
+add_executable(World001 src/main.cpp)
+target_link_libraries(World001 ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY})
+install(TARGETS World001 RUNTIME DESTINATION ${BIN_DIR})
