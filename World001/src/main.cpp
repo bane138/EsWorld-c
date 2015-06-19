@@ -22,33 +22,6 @@ void logSDLError(std::ostream &outputstream, const std::string &message) {
 }
 
 /**
-  * Depricated by IMG_LoadTexure
-  * Loads a BMP image into a texture on the rendering device
-  * @param file The BMP image file to load
-  * @param renderer the renderer to load the texture onto
-  * @return the loaded texture, or nullptr if something went wrong.
-  */
-/*SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *renderer) {
-    // Initialize nullptr to avoid dangling pointer issues
-    SDL_Texture *texture = nullptr;
-    // Load the image
-    SDL_Surface *loadedImage = SDL_LoadBMP(file.c_str());
-    // If loading went ok, convert to texture and return the texture
-    if(loadedImage != nullptr) {
-        texture = SDL_CreateTextureFromSurface(renderer, loadedImage);
-        SDL_FreeSurface(loadedImage);
-        // Make sure conversion went ok
-        if(texture == nullptr) {
-            logSDLError(std::cout, "SDL_CreateTextureFromSurface");
-        }
-    } else {
-        logSDLError(std::cout, "SDL_LoadBMP");
-    }
-cd
-    return texture;b
-}*/
-
-/**
   * Loads an image into a texture on the rendering  device
   * @param file The image file to load
   * @param renderer The renderer to load into
@@ -98,24 +71,6 @@ void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y) {
 }
 
 /**
-  * Draw and SDL_Texture to and SDL_Renderer at position x, y preserving
-  * the texture's width and height
-  * @param texture The source texture we want to draw
-  * @param renderer The renderer we want to draw to
-  * @param x The x coordinate
-  * @param y The y coordinate
-  *
-void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y) {
-    // Setup the destinaion rectangle at the position we want
-    SDL_Rect destination;
-    destination.x = x;
-    destination.y = y;
-    // Query the texture to get its width and height
-    SDL_QueryTexture(texture, NULL, NULL, &destination.w, &destination.h);
-    SDL_RenderCopy(renderer, texture, NULL, &destination);
-}*/
-
-/**
  * @brief main
  * @param argc
  * @param argv
@@ -155,10 +110,10 @@ int main(int argc, char **argv[])
     }
 
 
-    const std::string resourcePath = getResourcePath();
+    const std::string resourcePath = getResourcePath("World001");
     std::cout << resourcePath.c_str() << std::endl;
     SDL_Texture *background = loadTexture(resourcePath + "background.png", sdlRenderer);
-    SDL_Texture *image = loadTexture(resourcePath + "image.png", sdlRenderer);
+    SDL_Texture *image = loadTexture(resourcePath + "image2.png", sdlRenderer);
     if(background == nullptr || image == nullptr) {
         cleanup(background, image, sdlRenderer, sdlWindow);
         IMG_Quit();
@@ -167,12 +122,20 @@ int main(int argc, char **argv[])
     }
 
     SDL_RenderClear(sdlRenderer);
-    int bW, bH;
+    int xTiles = SCREEN_WIDTH / TILE_SIZE;
+    int yTiles = SCREEN_HEIGHT / TILE_SIZE;
+
+    for(int i = 0; i < xTiles * yTiles; ++i) {
+        int x = i % xTiles;
+        int y = i / xTiles;
+        renderTexture(background, sdlRenderer, x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    }
+    /*int bW, bH;
     SDL_QueryTexture(background, NULL, NULL, &bW, &bH);
     renderTexture(background, sdlRenderer, 0, 0);
     renderTexture(background, sdlRenderer, bW, 0);
     renderTexture(background, sdlRenderer, 0, bH);
-    renderTexture(background, sdlRenderer, bW, bH);
+    renderTexture(background, sdlRenderer, bW, bH);*/
 
     int iW, iH;
     SDL_QueryTexture(image, NULL, NULL, &iW, &iH);

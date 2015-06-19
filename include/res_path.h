@@ -35,8 +35,8 @@ std::string getResourcePath(const std::string &subDirectory = "") {
     static std::string baseResource;
     if(baseResource.empty()) {
         // SDL_GetBasePath will return NULL if something went wrong
-        const std::string basePath = "/home/dpitzel/Projects/C++/EsWorld/res"; //SDL_GetBasePath();
-        if(!basePath.empty()) {
+        char *basePath = SDL_GetBasePath();
+        if(basePath) {
             baseResource = basePath;
             SDL_free(basePath);
         } else {
@@ -46,7 +46,7 @@ std::string getResourcePath(const std::string &subDirectory = "") {
         // replace the last /bin with /res to get the resource path
         std::cout << baseResource.c_str() << std::endl;
         size_t pos = baseResource.rfind("bin");
-        baseResource = baseResource.substr(0, pos) + PATH_SEPERATOR;
+        baseResource = baseResource.substr(0, pos) + "res" + PATH_SEPERATOR;
     }
     // If we want a specific subdirectory path in the resource directory
     // append it to the base path.
