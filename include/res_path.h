@@ -44,7 +44,6 @@ std::string getResourcePath(const std::string &subDirectory = "") {
             return "";
         }
         // replace the last /bin with /res to get the resource path
-        std::cout << baseResource.c_str() << std::endl;
         size_t pos = baseResource.rfind("bin");
         baseResource = baseResource.substr(0, pos) + "res" + PATH_SEPERATOR;
     }
