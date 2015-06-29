@@ -4,6 +4,7 @@
 World001/CMakeFiles/World001.dir/src/main.cpp.o: ../include/cleanup.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: ../include/res_path.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: ../World001/src/main.cpp
+World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/include/SDL2/SDL_image.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_assert.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_atomic.h
@@ -43,6 +44,7 @@ World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_sys
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_thread.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_timer.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_touch.h
+World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_version.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/SDL_video.h
 World001/CMakeFiles/World001.dir/src/main.cpp.o: /usr/local/include/SDL2/begin_code.h

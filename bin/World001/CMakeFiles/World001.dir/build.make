@@ -84,6 +84,7 @@ World001/World001: World001/CMakeFiles/World001.dir/build.make
 World001/World001: /usr/local/lib/libSDL2main.a
 World001/World001: /usr/local/lib/libSDL2.so
 World001/World001: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
+World001/World001: /usr/local/lib/libSDL2_ttf.so
 World001/World001: World001/CMakeFiles/World001.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable World001"
 	cd /home/dpitzel/Projects/C++/EsWorld/bin/World001 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/World001.dir/link.txt --verbose=$(VERBOSE)

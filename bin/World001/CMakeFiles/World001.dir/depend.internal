@@ -5,6 +5,7 @@ World001/CMakeFiles/World001.dir/src/main.cpp.o
  ../include/cleanup.h
  ../include/res_path.h
  /home/dpitzel/Projects/C++/EsWorld/World001/src/main.cpp
+ /usr/include/SDL2/SDL_image.h
  /usr/local/include/SDL2/SDL.h
  /usr/local/include/SDL2/SDL_assert.h
  /usr/local/include/SDL2/SDL_atomic.h
@@ -44,6 +45,7 @@ World001/CMakeFiles/World001.dir/src/main.cpp.o
  /usr/local/include/SDL2/SDL_thread.h
  /usr/local/include/SDL2/SDL_timer.h
  /usr/local/include/SDL2/SDL_touch.h
+ /usr/local/include/SDL2/SDL_ttf.h
  /usr/local/include/SDL2/SDL_version.h
  /usr/local/include/SDL2/SDL_video.h
  /usr/local/include/SDL2/begin_code.h
