@@ -6,6 +6,7 @@
 
 #include "res_path.h"
 #include "cleanup.h"
+#include "CEsWorldScreen.h"
 
 using namespace std;
 

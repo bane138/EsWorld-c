@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../include/CEsWorldScreen.h
+string
+-
+
 ../include/cleanup.h
 utility
 -
@@ -33,6 +37,8 @@ res_path.h
 /home/dpitzel/Projects/C++/EsWorld/World001/src/res_path.h
 cleanup.h
 /home/dpitzel/Projects/C++/EsWorld/World001/src/cleanup.h
+CEsWorldScreen.h
+/home/dpitzel/Projects/C++/EsWorld/World001/src/CEsWorldScreen.h
 
 /usr/include/SDL2/SDL_image.h
 SDL.h
