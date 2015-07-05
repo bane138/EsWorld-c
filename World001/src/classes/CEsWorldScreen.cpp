@@ -68,9 +68,6 @@ bool CEsWorldScreen::setupScreen(void)
         SDL_Quit();
         return false;
     }
-
-    // create screen
-    this->createScreen(0, 0);
 }
 
 /**
@@ -78,7 +75,7 @@ bool CEsWorldScreen::setupScreen(void)
  */
 void CEsWorldScreen::deleteScreen(void)
 {
-    //cleanup(this->sdl_tBackground, this->sdl_rRenderer, this->sdl_wWindow);
+    cleanup(this->sdl_tBackground, this->sdl_rRenderer, this->sdl_wWindow);
 }
 
 /**
@@ -87,7 +84,7 @@ void CEsWorldScreen::deleteScreen(void)
  */
 void CEsWorldScreen::createScreen(int x, int y)
 {
-    this->sdl_tBackground = this->loadTexture(getResourcePath("EsWorld") + "background.png", this->sdl_rRenderer);
+    this->sdl_tBackground = this->loadTexture(getResourcePath("World001") + "background.png", this->sdl_rRenderer);
     SDL_RenderClear(this->sdl_rRenderer);
     this->renderTexture(this->sdl_tBackground, this->sdl_rRenderer, x, y);
     SDL_RenderPresent(this->sdl_rRenderer);

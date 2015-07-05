@@ -26,8 +26,8 @@ CGame::~CGame(void)
  */
 void CGame::startGame(void)
 {
-    setupGame();
     m_bIsRunning = true;
+    this->setupGame();
 }
 
 /**
@@ -47,8 +47,7 @@ void CGame::setupGame(void)
     /**
      * Setup screen for the game
      */
-    CEsWorldScreen m_oScreen;
-    m_oScreen.setupScreen();
+    this->m_oScreen.setupScreen();
     /**
     //CPlayer *m_oPlayer;
     */
@@ -64,5 +63,13 @@ void CGame::setupGame(void)
         m_nLevel = 1;
         m_nScore = 0;
     }
+}
+
+/**
+  * Draw the screen
+  */
+void CGame::drawScreen(void)
+{
+    this->m_oScreen.createScreen(0, 0);
 }
 

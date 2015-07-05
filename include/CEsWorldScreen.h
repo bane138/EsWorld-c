@@ -14,14 +14,14 @@ public:
     ~CEsWorldScreen(void);
     /* Setup screen */
     bool setupScreen(void);
+    /* Create screen */
+    void createScreen(int x, int y);
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
     /* Delete screen */
     void deleteScreen(void);
 private:
-    /* Create screen */
-    void createScreen(int x, int y);
     /* Load SDL texture */
     SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *renderer);
     /* SDL Render texture methods */

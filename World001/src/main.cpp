@@ -17,12 +17,46 @@ using namespace std;
 
 int main(int argc, char **argv[])
 {
+    /**
+     * Game loop
+     */
     CGame game;
+    SDL_Event e;
     game.startGame();
-    if(game.isGameRunning()) {
+    while(game.isGameRunning()) {
+        game.drawScreen();
         std::cout << "The game is running!" << endl;
-    } else {
-        std::cout << "The game is not running." << endl;
+        while(SDL_PollEvent(&e)) {
+            // If the user closes the window
+            if(e.type == SDL_QUIT) {
+                game.stopGame();
+            }
+            // quit on escape
+            if(e.type == SDL_KEYDOWN) {
+                switch(e.key.keysym.sym) {
+                   /*case SDLK_1:
+                        useClip = 0;
+                        break;
+                   case SDLK_2:
+                        useClip = 1;
+                        break;
+                   case SDLK_3:
+                        useClip = 2;
+                        break;
+                   case SDLK_4:
+                        useClip = 3;
+                        break;*/
+                   case SDLK_ESCAPE:
+                        game.stopGame();
+                        break;
+                   default:
+                        break;
+                }
+            }
+            if(e.type == SDL_MOUSEBUTTONDOWN) {
+                game.stopGame();
+            }
+        }
     }
 
     /*SDL_Color color = {255, 255, 255, 255};
@@ -76,58 +110,7 @@ int main(int argc, char **argv[])
     }
 
     // specify the clip to start with
-    int useClip = 0;
-
-    SDL_Event e;
-    bool quit = false;
-    while(!quit) {
-        // Read user input and handle
-        while(SDL_PollEvent(&e)) {
-            // If the user closes the window
-            if(e.type == SDL_QUIT) {
-                quit = true;
-            }
-            // If the user presses keys 1 - 4
-            // select different clip sections or
-            // quit on escape
-            if(e.type == SDL_KEYDOWN) {
-                switch(e.key.keysym.sym) {
-                    case SDLK_1:
-                        useClip = 0;
-                        break;
-                   case SDLK_2:
-                        useClip = 1;
-                        break;
-                   case SDLK_3:
-                        useClip = 2;
-                        break;
-                   case SDLK_4:
-                        useClip = 3;
-                        break;
-                   case SDLK_ESCAPE:
-                        quit = true;
-                        break;
-                   default:
-                        break;
-                }
-            }
-
-            // If the user clickes the mouse
-            /*if(e.type == SDL_MOUSEBUTTONDOWN) {
-                quit = true;
-            }
-        }
-        // Render screen
-        SDL_RenderClear(sdlRenderer);
-        renderTexture(image, sdlRenderer, x, y); //, &clips[useClip]
-        SDL_RenderPresent(sdlRenderer);
-    }
-
-    /*SDL_RenderPresent(sdlRenderer);
-    SDL_Delay(3000);*/
-
-    /*cleanup(image, sdlRenderer, sdlWindow);
-    SDL_Quit();*/
+    int useClip = 0;*/
     return 0;
 }
 
