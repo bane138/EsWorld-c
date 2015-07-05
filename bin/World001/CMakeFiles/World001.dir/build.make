@@ -77,9 +77,13 @@ World001_OBJECTS = \
 "CMakeFiles/World001.dir/src/main.cpp.o"
 
 # External object files for target World001
-World001_EXTERNAL_OBJECTS =
+World001_EXTERNAL_OBJECTS = \
+"/home/dpitzel/Projects/C++/EsWorld/bin/World001/CMakeFiles/C.dir/src/classes/CGame.cpp.o" \
+"/home/dpitzel/Projects/C++/EsWorld/bin/World001/CMakeFiles/C.dir/src/classes/CEsWorldScreen.cpp.o"
 
 World001/World001: World001/CMakeFiles/World001.dir/src/main.cpp.o
+World001/World001: World001/CMakeFiles/C.dir/src/classes/CGame.cpp.o
+World001/World001: World001/CMakeFiles/C.dir/src/classes/CEsWorldScreen.cpp.o
 World001/World001: World001/CMakeFiles/World001.dir/build.make
 World001/World001: /usr/local/lib/libSDL2main.a
 World001/World001: /usr/local/lib/libSDL2.so

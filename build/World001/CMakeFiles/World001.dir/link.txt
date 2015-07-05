@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wall -Wextra -pedantic -std=c++11  -Wall -Wextra -pedantic -std=c++11 -g -g    CMakeFiles/World001.dir/src/main.cpp.o  -o World001 -rdynamic /usr/local/lib/libSDL2main.a /usr/local/lib/libSDL2.so -lpthread -lSDL2_image -Wl,-rpath,/usr/local/lib: 

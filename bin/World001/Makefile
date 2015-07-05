@@ -140,6 +140,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+World001/CMakeFiles/C.dir/rule:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f CMakeFiles/Makefile2 World001/CMakeFiles/C.dir/rule
+.PHONY : World001/CMakeFiles/C.dir/rule
+
+# Convenience name for target.
+C : World001/CMakeFiles/C.dir/rule
+.PHONY : C
+
+# fast build rule for target.
+C/fast:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/build
+.PHONY : C/fast
+
+# Convenience name for target.
 World001/CMakeFiles/World001.dir/rule:
 	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f CMakeFiles/Makefile2 World001/CMakeFiles/World001.dir/rule
 .PHONY : World001/CMakeFiles/World001.dir/rule
@@ -152,6 +166,54 @@ World001: World001/CMakeFiles/World001.dir/rule
 World001/fast:
 	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/World001.dir/build.make World001/CMakeFiles/World001.dir/build
 .PHONY : World001/fast
+
+src/classes/CEsWorldScreen.o: src/classes/CEsWorldScreen.cpp.o
+.PHONY : src/classes/CEsWorldScreen.o
+
+# target to build an object file
+src/classes/CEsWorldScreen.cpp.o:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/src/classes/CEsWorldScreen.cpp.o
+.PHONY : src/classes/CEsWorldScreen.cpp.o
+
+src/classes/CEsWorldScreen.i: src/classes/CEsWorldScreen.cpp.i
+.PHONY : src/classes/CEsWorldScreen.i
+
+# target to preprocess a source file
+src/classes/CEsWorldScreen.cpp.i:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/src/classes/CEsWorldScreen.cpp.i
+.PHONY : src/classes/CEsWorldScreen.cpp.i
+
+src/classes/CEsWorldScreen.s: src/classes/CEsWorldScreen.cpp.s
+.PHONY : src/classes/CEsWorldScreen.s
+
+# target to generate assembly for a file
+src/classes/CEsWorldScreen.cpp.s:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/src/classes/CEsWorldScreen.cpp.s
+.PHONY : src/classes/CEsWorldScreen.cpp.s
+
+src/classes/CGame.o: src/classes/CGame.cpp.o
+.PHONY : src/classes/CGame.o
+
+# target to build an object file
+src/classes/CGame.cpp.o:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/src/classes/CGame.cpp.o
+.PHONY : src/classes/CGame.cpp.o
+
+src/classes/CGame.i: src/classes/CGame.cpp.i
+.PHONY : src/classes/CGame.i
+
+# target to preprocess a source file
+src/classes/CGame.cpp.i:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/src/classes/CGame.cpp.i
+.PHONY : src/classes/CGame.cpp.i
+
+src/classes/CGame.s: src/classes/CGame.cpp.s
+.PHONY : src/classes/CGame.s
+
+# target to generate assembly for a file
+src/classes/CGame.cpp.s:
+	cd /home/dpitzel/Projects/C++/EsWorld/bin && $(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/src/classes/CGame.cpp.s
+.PHONY : src/classes/CGame.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -183,6 +245,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... C"
 	@echo "... World001"
 	@echo "... edit_cache"
 	@echo "... install"
@@ -190,6 +253,12 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... src/classes/CEsWorldScreen.o"
+	@echo "... src/classes/CEsWorldScreen.i"
+	@echo "... src/classes/CEsWorldScreen.s"
+	@echo "... src/classes/CGame.o"
+	@echo "... src/classes/CGame.i"
+	@echo "... src/classes/CGame.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -140,6 +140,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named C
+
+# Build rule for target.
+C : cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 C
+.PHONY : C
+
+# fast build rule for target.
+C/fast:
+	$(MAKE) -f World001/CMakeFiles/C.dir/build.make World001/CMakeFiles/C.dir/build
+.PHONY : C/fast
+
+#=============================================================================
 # Target rules for targets named World001
 
 # Build rule for target.
@@ -164,6 +177,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... C"
 	@echo "... World001"
 .PHONY : help
 

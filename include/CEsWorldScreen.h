@@ -1,6 +1,9 @@
 #ifndef ESWORLDSCREEN_H
 #define ESWORLDSCREEN_H
 #include <string>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 
 class CEsWorldScreen
 {
@@ -18,7 +21,7 @@ public:
     void deleteScreen(void);
 private:
     /* Create screen */
-    void createScreen(void);
+    void createScreen(int x, int y);
     /* Load SDL texture */
     SDL_Texture* loadTexture(const std::string &file, SDL_Renderer *renderer);
     /* SDL Render texture methods */
@@ -31,9 +34,10 @@ private:
     /* SDL render text method */
     SDL_Texture* renderText(const std::string &message, const std::string &fontFile,
                             SDL_Color color, int fontSize, SDL_Renderer *renderer);
+
     int m_nWidth;
     int m_nHeight;
-    const std::string sResourcePath;
+    std::string *sResourcePath;
     SDL_Window *sdl_wWindow;
     SDL_Renderer *sdl_rRenderer;
     SDL_Surface *sdl_sSurface;
