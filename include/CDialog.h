@@ -37,7 +37,7 @@ private:
     int m_nWidth;
     int m_nHeight;
     int m_nPositionX;
-    int m_mPositionY;
+    int m_nPositionY;
     int m_nState;
 };
 

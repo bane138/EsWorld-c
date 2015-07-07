@@ -44,6 +44,8 @@ void CDialog::createDialog(int x, int y, int width, int height, const char *titl
 
 bool CDialog::showDialog(int x, int y)
 {
+    this->m_nPositionX = x;
+    this->m_nPositionY = y;
     return true;
 }
 

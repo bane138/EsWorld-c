@@ -68,6 +68,7 @@ bool CEsWorldScreen::setupScreen(void)
         SDL_Quit();
         return false;
     }
+    return true;
 }
 
 /**
