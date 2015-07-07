@@ -16,6 +16,8 @@ public:
     bool setupScreen(void);
     /* Create screen */
     void createScreen(int x, int y);
+    /* Create text */
+    void createText(std::string &text);
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
@@ -42,6 +44,8 @@ private:
     SDL_Renderer *sdl_rRenderer;
     SDL_Surface *sdl_sSurface;
     SDL_Texture *sdl_tBackground;
+    SDL_Texture *sdl_tForeground;
+    SDL_Texture *sdl_tText;
 };
 
 #endif // ESWORLDSCREEN_H

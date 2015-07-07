@@ -18,6 +18,8 @@ public:
     void startGame(void);
     void stopGame(void);
     void drawScreen(void);
+    void drawText(std::string text);
+
     bool isGameRunning(void) { return m_bIsRunning; }
 private:
     /* Methods */

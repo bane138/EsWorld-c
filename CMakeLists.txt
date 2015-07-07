@@ -26,5 +26,5 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 include_directories(include)
 
-# Look in the World001 subdirectory to find its CMakeLists.txt so we can build the executable
-add_subdirectory(World001)
+# Look in the src subdirectory to find its CMakeLists.txt so we can build the executable
+add_subdirectory(src)

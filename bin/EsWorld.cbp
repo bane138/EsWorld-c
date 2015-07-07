@@ -5,7 +5,7 @@
       <Option title="EsWorld" />
       <Option makefile_is_custom="1" />
       <Option compiler="gcc" />
-      <Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\World001\;" />
+      <Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\src\;" />
       <Build>
       <Target title="all">
          <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin" />
@@ -67,11 +67,11 @@
             <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="World001">
-         <Option output="/home/dpitzel/Projects/C++/EsWorld/bin/World001/World001" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin/World001" />
+      <Target title="C">
+         <Option output="/home/dpitzel/Projects/C++/EsWorld/bin/src/CMakeFiles/C.dir/C.objlib" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin/src" />
          <Option object_output="./" />
-         <Option type="1" />
+         <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
             <Add directory="/home/dpitzel/Projects/C++/EsWorld/include" />
@@ -79,15 +79,33 @@
             <Add directory="/usr/local/include/SDL2" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 World001" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 C" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="World001/fast">
-         <Option output="/home/dpitzel/Projects/C++/EsWorld/bin/World001/World001" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin/World001" />
+      <Target title="C/fast">
+         <Option output="/home/dpitzel/Projects/C++/EsWorld/bin/src/CMakeFiles/C.dir/C.objlib" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin/src" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/dpitzel/Projects/C++/EsWorld/include" />
+            <Add directory="/usr/include/SDL2" />
+            <Add directory="/usr/local/include/SDL2" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 C/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="esworld">
+         <Option output="/home/dpitzel/Projects/C++/EsWorld/bin/src/esworld" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin/src" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -97,14 +115,38 @@
             <Add directory="/usr/local/include/SDL2" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 World001/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/World001/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 esworld" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="esworld/fast">
+         <Option output="/home/dpitzel/Projects/C++/EsWorld/bin/src/esworld" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/dpitzel/Projects/C++/EsWorld/bin/src" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/dpitzel/Projects/C++/EsWorld/include" />
+            <Add directory="/usr/include/SDL2" />
+            <Add directory="/usr/local/include/SDL2" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 esworld/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/dpitzel/Projects/C++/EsWorld/bin/src/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/World001/src/main.cpp">
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/src/classes/CDialog.cpp">
+      </Unit>
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/src/classes/CEsWorldScreen.cpp">
+      </Unit>
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/src/classes/CGame.cpp">
+      </Unit>
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/src/main.cpp">
       </Unit>
       <Unit filename="/home/dpitzel/Projects/C++/EsWorld/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />
@@ -115,14 +157,20 @@
       <Unit filename="/home/dpitzel/Projects/C++/EsWorld/cmake/FindSDL2_image.cmake">
           <Option virtualFolder="CMake Files\cmake\" />
       </Unit>
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/cmake/FindSDL2_ttf.cmake">
+          <Option virtualFolder="CMake Files\cmake\" />
+      </Unit>
       <Unit filename="/home/dpitzel/Projects/C++/EsWorld/cmake/FindSDL2_image.cmake">
           <Option virtualFolder="CMake Files\cmake\" />
       </Unit>
-      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/World001/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\World001\" />
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/cmake/FindSDL2_ttf.cmake">
+          <Option virtualFolder="CMake Files\cmake\" />
       </Unit>
-      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/World001/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\World001\" />
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/src/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\" />
+      </Unit>
+      <Unit filename="/home/dpitzel/Projects/C++/EsWorld/src/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\" />
       </Unit>
    </Project>
 </CodeBlocks_project_file>
