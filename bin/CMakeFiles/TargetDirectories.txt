@@ -1,2 +1,0 @@
-/home/dpitzel/Projects/C++/EsWorld/bin/src/CMakeFiles/C.dir
-/home/dpitzel/Projects/C++/EsWorld/bin/src/CMakeFiles/esworld.dir
