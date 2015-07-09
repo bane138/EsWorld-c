@@ -143,7 +143,8 @@ void CEsWorldScreen::drawText(std::string &text, int x, int y)
   * @param renderer The renderer to load into
   * @return The loaded texture or nullptr if something went wrong
   */
-SDL_Texture* CEsWorldScreen::loadTexture(const std::string &file, SDL_Renderer *renderer) {
+SDL_Texture* CEsWorldScreen::loadTexture(const std::string &file, SDL_Renderer *renderer)
+{
     SDL_Texture *texture = IMG_LoadTexture(renderer, file.c_str());
     if(texture == nullptr) {
         logSDLError(std::cout, "IMG_LoadTexture");

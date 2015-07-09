@@ -33,8 +33,8 @@ int main(int argc, char **argv)
     static float fps = 0.0f;
     game.startGame();
     CEsWorldScreen *screen = game.getScreen();
-    CDialog dialogBox;
-    dialogBox.setScreen(screen);
+    /*CDialog dialogBox;
+    dialogBox.setScreen(screen);*/
     while(game.isGameRunning()) {
         time(&timepassed);
         if(first) {
@@ -83,8 +83,8 @@ int main(int argc, char **argv)
         frames++;
         timepassed++;
         screen->drawScreen(0, 0, 640, 480);
-        dialogBox.createDialog(10, 10, 50, 20);
-        dialogBox.showDialog();
+        //dialogBox.createDialog(10, 10, 50, 20);
+        //dialogBox.showDialog();
         //game.drawText(to_string(fps), 10, 10);
         //game.drawText(to_string(game.getLevel()), 580, 10);
     }

@@ -27,4 +27,5 @@ include_directories(${SDL2_INCLUDE_DIR})
 include_directories(include)
 
 # Look in the src subdirectory to find its CMakeLists.txt so we can build the executable
+add_subdirectory(include)
 add_subdirectory(src)

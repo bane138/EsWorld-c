@@ -47,6 +47,7 @@ void CGame::setupGame(void)
     /**
      * Setup screen for the game
      */
+    this->m_oScreen = new CEsWorldScreen();
     this->m_oScreen->setupScreen();
     /**
     //CPlayer *m_oPlayer;
@@ -68,6 +69,7 @@ void CGame::setupGame(void)
   */
 CEsWorldScreen* CGame::getScreen(void)
 {
+    this->m_oScreen->setupScreen();
     return this->m_oScreen;
 }
 
