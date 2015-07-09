@@ -2,7 +2,7 @@
 #define CDIALOG_H
 #include <string>
 #include <SDL.h>
-#include "tools.h"
+#include "CEsWorldScreen.h"
 
 using namespace std;
 
@@ -15,25 +15,26 @@ class CDialog
 {
 public:
     /* Constructor */
-    CDialog(void);
+    CDialog();
     /* Destructor */
     ~CDialog(void);
     /* createDialog build a dialog box. This will probaly
      * have several overriden versions depending on the types
      * of dialogs we come up with.
      */
-    void createDialog(int x, int y, int width, int height, const char *title);
+    void setScreen(CEsWorldScreen *screen);
+    void createDialog(int x, int y, int width, int height);
     /* showDialog display at x y */
-    bool showDialog(int x, int y);
+    bool showDialog();
     bool closeDialog(void);
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
 private:
     void setWidth(int width) { m_nWidth = width; }
     void setHeight(int height) { m_nHeight = height; }
-    SDL_Window *sdl_wWindow;
-    SDL_Renderer *sdl_rRenderer;
-
+    CEsWorldScreen *m_oScreen;
+    SDL_Rect *m_recDestination;
+    SDL_Rect *m_recClip;
     int m_nWidth;
     int m_nHeight;
     int m_nPositionX;

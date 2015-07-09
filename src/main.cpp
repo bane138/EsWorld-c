@@ -5,6 +5,7 @@
 #include <SDL_ttf.h>
 
 #include "CGame.h"
+#include "CDialog.h"
 
 #include <time.h>
 
@@ -31,6 +32,9 @@ int main(int argc, char **argv)
     static bool first = true;
     static float fps = 0.0f;
     game.startGame();
+    CEsWorldScreen *screen = game.getScreen();
+    CDialog dialogBox;
+    dialogBox.setScreen(screen);
     while(game.isGameRunning()) {
         time(&timepassed);
         if(first) {
@@ -43,8 +47,7 @@ int main(int argc, char **argv)
             starttime = timepassed;
             frames = 0;
         }
-        game.drawScreen();
-        game.drawText(to_string(fps));
+
         std::cout << "The game is running!" << endl;
         while(SDL_PollEvent(&e)) {
             // If the user closes the window
@@ -79,6 +82,11 @@ int main(int argc, char **argv)
         }
         frames++;
         timepassed++;
+        screen->drawScreen(0, 0, 640, 480);
+        dialogBox.createDialog(10, 10, 50, 20);
+        dialogBox.showDialog();
+        //game.drawText(to_string(fps), 10, 10);
+        //game.drawText(to_string(game.getLevel()), 580, 10);
     }
 
     /*SDL_Color color = {255, 255, 255, 255};

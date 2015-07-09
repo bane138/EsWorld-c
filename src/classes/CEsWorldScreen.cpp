@@ -12,8 +12,8 @@
  */
 CEsWorldScreen::CEsWorldScreen(void)
 {
-    m_nWidth = 640;
-    m_nHeight = 480;
+    this->m_nWidth = 640;
+    this->m_nHeight = 480;
 }
 
 /**
@@ -52,7 +52,7 @@ bool CEsWorldScreen::setupScreen(void)
     // SDL Window
     this->sdl_wWindow = SDL_CreateWindow("EsWorld",
                                             100,100,
-                                            640, 480,
+                                            this->m_nWidth, this->m_nHeight,
                                             SDL_WINDOW_SHOWN);
     if(this->sdl_wWindow == nullptr) {
         logSDLError(std::cout, "SDL_CreateWindow");
@@ -83,12 +83,41 @@ void CEsWorldScreen::deleteScreen(void)
  * @brief CEsWorldScreen::createScreen
  * Load texture and render the screen
  */
-void CEsWorldScreen::createScreen(int x, int y)
+void CEsWorldScreen::drawScreen(int x, int y, int w, int h)
 {
     this->sdl_tBackground = this->loadTexture(getResourcePath("World001") + "background.png",
                                               this->sdl_rRenderer);
     SDL_RenderClear(this->sdl_rRenderer);
-    this->renderTexture(this->sdl_tBackground, this->sdl_rRenderer, x, y);
+    this->renderTexture(this->sdl_tBackground, this->sdl_rRenderer, x, y, w, h);
+    SDL_RenderPresent(this->sdl_rRenderer);
+}
+
+/**
+ * @brief CEsWorldScreen::drawScreen
+ * @param destination
+ * @param clip
+ */
+void CEsWorldScreen::drawScreen(SDL_Rect destination, SDL_Rect *clip)
+{
+    this->sdl_tBackground = this->loadTexture(getResourcePath("World001") + "background.png",
+                                              this->sdl_rRenderer);
+    SDL_RenderClear(this->sdl_rRenderer);
+    this->renderTexture(this->sdl_tBackground, this->sdl_rRenderer, destination, clip);
+    SDL_RenderPresent(this->sdl_rRenderer);
+}
+
+/**
+ * @brief CEsWorldScreen::drawScreen
+ * @param x
+ * @param y
+ * @param clip
+ */
+void CEsWorldScreen::drawScreen(int x, int y, SDL_Rect *clip)
+{
+    this->sdl_tBackground = this->loadTexture(getResourcePath("World001") + "background.png",
+                                              this->sdl_rRenderer);
+    SDL_RenderClear(this->sdl_rRenderer);
+    this->renderTexture(this->sdl_tBackground, this->sdl_rRenderer, x, y, clip);
     SDL_RenderPresent(this->sdl_rRenderer);
 }
 
@@ -96,13 +125,15 @@ void CEsWorldScreen::createScreen(int x, int y)
   * CEsWorldScreen::createText
   * @param std::string text the text
   */
-void CEsWorldScreen::createText(std::string &text)
+void CEsWorldScreen::drawText(std::string &text, int x, int y)
 {
-    SDL_Color color = {255, 255, 255, 255};
+    int tW, tH;
+    SDL_Color color = {255, 0, 0, 0};
     SDL_Texture *textToRender = this->renderText(text, getResourcePath("World001") + "sample.ttf",
-                                                 color, 32, this->sdl_rRenderer);
+                                                 color, 22, this->sdl_rRenderer);
+    SDL_QueryTexture(textToRender, NULL, NULL, &tW, &tH);
     SDL_RenderClear(this->sdl_rRenderer);
-    this->renderTexture(textToRender, this->sdl_rRenderer, 100, 100);
+    this->renderTexture(textToRender, this->sdl_rRenderer, x, y, tW, tH);
     SDL_RenderPresent(this->sdl_rRenderer);
 }
 
@@ -143,7 +174,7 @@ void CEsWorldScreen::renderTexture(SDL_Texture *texture, SDL_Renderer *renderer,
 
 /**
   * Draw an SDL_Texture to an SDL_Renderer at some destination rect.
-  * takeing a clip of the texture if desiredct
+  * takeing a clip of the texture if desired
   * @param texture the source texture we want to draw
   * @param renderer the renderer we want to draw to
   * @param destination the destination rectangle to render the texture to

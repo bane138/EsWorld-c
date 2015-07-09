@@ -16,36 +16,28 @@ CDialog::CDialog()
 /**
  * @brief CDialog::~CDialog
  */
-CDialog::~CDialog()
+CDialog::~CDialog(void)
 {
 
 }
 
-void CDialog::createDialog(int x, int y, int width, int height, const char *title)
+void CDialog::setScreen(CEsWorldScreen *screen)
 {
-    // SDL Window
-    this->sdl_wWindow = SDL_CreateWindow(title,
-                                            x,y,
-                                            width, height,
-                                            SDL_WINDOW_SHOWN);
-    if(this->sdl_wWindow == nullptr) {
-        logSDLError(std::cout, "SDL_CreateWindow");
-        SDL_Quit();;
-    }
-
-    // SDL Renderer
-    this->sdl_rRenderer = SDL_CreateRenderer(sdl_wWindow, -1,
-                                                    SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if(this->sdl_rRenderer == nullptr) {
-        logSDLError(std::cout, "SDL_Renderer");
-        SDL_Quit();
-    }
+    this->m_oScreen = screen;
 }
 
-bool CDialog::showDialog(int x, int y)
+void CDialog::createDialog(int x, int y, int width, int height)
 {
-    this->m_nPositionX = x;
-    this->m_nPositionY = y;
+    this->m_recClip->x = x;
+    this->m_recClip->y = y;
+    this->m_recClip->w = width;
+    this->m_recClip->h = height;
+    this->m_oScreen->drawScreen(x, y, this->m_recClip);
+
+}
+
+bool CDialog::showDialog()
+{
     return true;
 }
 

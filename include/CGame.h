@@ -17,18 +17,17 @@ public:
      */
     void startGame(void);
     void stopGame(void);
-    void drawScreen(void);
-    void drawText(std::string text);
+    CEsWorldScreen* getScreen(void);
 
     bool isGameRunning(void) { return m_bIsRunning; }
+    int getLevel(void) { return m_nLevel; }
 private:
     /* Methods */
     void setupGame(void);
     /* Properties */
     bool m_bIsRunning;
     int m_nLevel;
-    int m_nScore;
-    CEsWorldScreen m_oScreen;
+    CEsWorldScreen *m_oScreen;
     std::map<std::string, int> m_mGameData;
     //CPlayer m_oPlayer
 };

@@ -14,10 +14,12 @@ public:
     ~CEsWorldScreen(void);
     /* Setup screen */
     bool setupScreen(void);
-    /* Create screen */
-    void createScreen(int x, int y);
+    /* Draw screen */
+    void drawScreen(int x, int y, int w, int h);
+    void drawScreen(SDL_Rect destination, SDL_Rect *clip);
+    void drawScreen(int x, int y, SDL_Rect *clip);
     /* Create text */
-    void createText(std::string &text);
+    void drawText(std::string &text, int x, int y);
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
@@ -44,7 +46,7 @@ private:
     SDL_Renderer *sdl_rRenderer;
     SDL_Surface *sdl_sSurface;
     SDL_Texture *sdl_tBackground;
-    SDL_Texture *sdl_tForeground;
+    SDL_Texture *sdl_tImage;
     SDL_Texture *sdl_tText;
 };
 

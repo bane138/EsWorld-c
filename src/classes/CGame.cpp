@@ -47,7 +47,7 @@ void CGame::setupGame(void)
     /**
      * Setup screen for the game
      */
-    this->m_oScreen.setupScreen();
+    this->m_oScreen->setupScreen();
     /**
     //CPlayer *m_oPlayer;
     */
@@ -57,24 +57,18 @@ void CGame::setupGame(void)
      */
     //std::map<string, int> *m_mGameData;
     this->m_mGameData["level"] = 1;
-    this->m_mGameData["score"] = 0;
     if(!m_mGameData.empty()) {
     } else {
         m_nLevel = 1;
-        m_nScore = 0;
     }
 }
 
 /**
   * Draw the screen
   */
-void CGame::drawScreen(void)
+CEsWorldScreen* CGame::getScreen(void)
 {
-    this->m_oScreen.createScreen(0, 0);
+    return this->m_oScreen;
 }
 
-void CGame::drawText(std::string text)
-{
-    this->m_oScreen.createText(text);
-}
 
