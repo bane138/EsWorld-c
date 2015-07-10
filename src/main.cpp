@@ -62,18 +62,19 @@ int main(int argc, char **argv)
                         break;
                 }
             }
-            if(e.type == SDL_MOUSEBUTTONDOWN) {
+            /*if(e.type == SDL_MOUSEBUTTONDOWN) {
                 game.stopGame();
-            }
+            }*/
         }
         frames++;
         timepassed++;
-        screen->drawScreen("background.png", 0, 0, 640, 480);
+        CDialog dialogBox;
+        dialogBox.setScreen(screen);
+        dialogBox.createBasicDialog();
+        //screen->drawScreen("background.png", 0, 0, 640, 480);
 
         //screen->drawText(to_string(fps), 10, 10);
         //screen->drawText(to_string(game.getLevel()), 580, 10);
-        //CDialog dialogBox;
-        //dialogBox.createDialog("dialog_bk.png", 10, 10, 32, 32);
     }
 
     /*int xTiles = SCREEN_WIDTH / TILE_SIZE;

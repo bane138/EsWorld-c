@@ -2,6 +2,8 @@
 #define CDIALOG_H
 #include <string>
 #include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "CEsWorldScreen.h"
 
 using namespace std;
@@ -18,17 +20,40 @@ public:
     CDialog();
     /* Destructor */
     ~CDialog(void);
-    /* createDialog build a dialog box. This will probaly
-     * have several overriden versions depending on the types
-     * of dialogs we come up with.
+    /**
+     * @brief setScreen
+     * @param screen
      */
     void setScreen(CEsWorldScreen *screen);
+    /**
+     * @brief createImageDialog
+     * @param background
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     void createImageDialog(const std::string background, int x, int y, int width, int height);
+    /**
+     * @brief createBasicDialog
+     */
     void createBasicDialog(void);
     /* showDialog display at x y */
-    bool showDialog();
-    bool closeDialog(void);
+    void showDialog();
+    /**
+     * @brief closeDialog
+     * @return
+     */
+    void closeDialog(void);
+    /**
+     * @brief getWidth
+     * @return
+     */
     int getWidth(void) const { return m_nWidth; }
+    /**
+     * @brief getHeight
+     * @return
+     */
     int getHeight(void) const { return m_nHeight; }
 private:
     void setWidth(int width) { m_nWidth = width; }

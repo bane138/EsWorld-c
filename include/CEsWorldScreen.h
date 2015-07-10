@@ -1,5 +1,6 @@
 #ifndef ESWORLDSCREEN_H
 #define ESWORLDSCREEN_H
+#include <iostream>
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
@@ -27,6 +28,7 @@ public:
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
+    SDL_Renderer* getRenderer(void) { return m_sdlRenderer; }
     /* Delete screen */
     void deleteScreen(void);
 private:
@@ -47,10 +49,7 @@ private:
     int m_nHeight;
     SDL_Window *m_sdlWindow;
     SDL_Renderer *m_sdlRenderer;
-    SDL_Surface *m_sSurface;
     SDL_Texture *m_tBackground;
-    SDL_Texture *sdl_tImage;
-    SDL_Texture *sdl_tText;
 };
 
 #endif // ESWORLDSCREEN_H

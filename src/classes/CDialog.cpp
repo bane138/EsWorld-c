@@ -50,15 +50,27 @@ void CDialog::createImageDialog(const std::string background, int x, int y, int 
 
 void CDialog::createBasicDialog(void)
 {
+    SDL_SetRenderDrawColor(this->m_oScreen->getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderClear(this->m_oScreen->getRenderer());
+    SDL_Rect dialog = { SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+    SDL_SetRenderDrawColor(this->m_oScreen->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
+    SDL_RenderFillRect(this->m_oScreen->getRenderer(), &dialog);
 
+    SDL_RenderPresent( this->m_oScreen->getRenderer() );
 }
 
-bool CDialog::showDialog()
+/**
+ * @brief CDialog::showDialog
+ */
+void CDialog::showDialog()
 {
-    return true;
+    this->m_nState = true;
 }
 
-bool CDialog::closeDialog()
+/**
+ * @brief CDialog::closeDialog
+ */
+void CDialog::closeDialog()
 {
-    return true;
+    this->m_nState = false;
 }
