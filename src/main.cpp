@@ -25,16 +25,14 @@ int main(int argc, char **argv)
      */
     CGame game;
     SDL_Event e;
+    game.startGame();
+    CEsWorldScreen *screen = game.getScreen();
     time_t starttime;
     time(&starttime);
     time_t timepassed;
     static int frames = 0;
     static bool first = true;
     static float fps = 0.0f;
-    game.startGame();
-    CEsWorldScreen *screen = game.getScreen();
-    /*CDialog dialogBox;
-    dialogBox.setScreen(screen);*/
     while(game.isGameRunning()) {
         time(&timepassed);
         if(first) {
@@ -52,26 +50,12 @@ int main(int argc, char **argv)
         while(SDL_PollEvent(&e)) {
             // If the user closes the window
             if(e.type == SDL_QUIT) {
-                screen->deleteScreen();
                 game.stopGame();
             }
             // quit on escape
             if(e.type == SDL_KEYDOWN) {
                 switch(e.key.keysym.sym) {
-                   /*case SDLK_1:
-                        useClip = 0;
-                        break;
-                   case SDLK_2:
-                        useClip = 1;
-                        break;
-                   case SDLK_3:
-                        useClip = 2;
-                        break;
-                   case SDLK_4:
-                        useClip = 3;
-                        break;*/
                    case SDLK_ESCAPE:
-                        screen->deleteScreen();
                         game.stopGame();
                         break;
                    default:
@@ -79,18 +63,17 @@ int main(int argc, char **argv)
                 }
             }
             if(e.type == SDL_MOUSEBUTTONDOWN) {
-                screen->deleteScreen();
                 game.stopGame();
             }
         }
         frames++;
         timepassed++;
         screen->drawScreen("background.png", 0, 0, 640, 480);
-        //CDialog dialogBox;
-        //dialogBox.createDialog("dialog_bk.png", 10, 10, 32, 32);
+
         //screen->drawText(to_string(fps), 10, 10);
         //screen->drawText(to_string(game.getLevel()), 580, 10);
-        screen->render();
+        //CDialog dialogBox;
+        //dialogBox.createDialog("dialog_bk.png", 10, 10, 32, 32);
     }
 
     /*int xTiles = SCREEN_WIDTH / TILE_SIZE;

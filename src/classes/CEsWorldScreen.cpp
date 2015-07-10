@@ -79,8 +79,6 @@ bool CEsWorldScreen::setupScreen(void)
 void CEsWorldScreen::deleteScreen(void)
 {
     cleanup(this->m_tBackground, this->m_sdlRenderer, this->m_sdlWindow);
-    IMG_Quit();
-    SDL_Quit();
 }
 
 /**
@@ -93,6 +91,7 @@ void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, int w, i
                                               this->m_sdlRenderer);
     SDL_RenderClear(this->m_sdlRenderer);
     this->renderTexture(this->m_tBackground, this->m_sdlRenderer, x, y, w, h);
+    SDL_RenderPresent(this->m_sdlRenderer);
 }
 
 /**
@@ -106,6 +105,7 @@ void CEsWorldScreen::drawScreen(const std::string &image, SDL_Rect destination, 
                                               this->m_sdlRenderer);
     SDL_RenderClear(this->m_sdlRenderer);
     this->renderTexture(this->m_tBackground, this->m_sdlRenderer, destination, clip);
+    SDL_RenderPresent(this->m_sdlRenderer);
 }
 
 /**
@@ -120,6 +120,7 @@ void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, SDL_Rect
                                               this->m_sdlRenderer);
     SDL_RenderClear(this->m_sdlRenderer);
     this->renderTexture(this->m_tBackground, this->m_sdlRenderer, x, y, clip);
+    SDL_RenderPresent(this->m_sdlRenderer);
 }
 
 /**
@@ -140,6 +141,7 @@ void CEsWorldScreen::drawText(const std::string &text, int x, int y)
     m_recClip->h = tH;*/
     SDL_RenderClear(this->m_sdlRenderer);
     this->renderTexture(textToRender, this->m_sdlRenderer, x, y);
+    SDL_RenderPresent(this->m_sdlRenderer);
 }
 
 /**
