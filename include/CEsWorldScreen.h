@@ -5,6 +5,9 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
+
 class CEsWorldScreen
 {
 public:
@@ -15,11 +18,12 @@ public:
     /* Setup screen */
     bool setupScreen(void);
     /* Draw screen */
-    void drawScreen(int x, int y, int w, int h);
-    void drawScreen(SDL_Rect destination, SDL_Rect *clip);
-    void drawScreen(int x, int y, SDL_Rect *clip);
+    void drawScreen(const std::string &image, int x, int y, int w, int h);
+    void drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect *clip);
+    void drawScreen(const std::string &image, int x, int y, SDL_Rect *clip);
+    void render(void);
     /* Create text */
-    void drawText(std::string &text, int x, int y);
+    void drawText(const std::string &text, int x, int y);
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
@@ -41,11 +45,10 @@ private:
 
     int m_nWidth;
     int m_nHeight;
-    std::string *sResourcePath;
-    SDL_Window *sdl_wWindow;
-    SDL_Renderer *sdl_rRenderer;
-    SDL_Surface *sdl_sSurface;
-    SDL_Texture *sdl_tBackground;
+    SDL_Window *m_sdlWindow;
+    SDL_Renderer *m_sdlRenderer;
+    SDL_Surface *m_sSurface;
+    SDL_Texture *m_tBackground;
     SDL_Texture *sdl_tImage;
     SDL_Texture *sdl_tText;
 };

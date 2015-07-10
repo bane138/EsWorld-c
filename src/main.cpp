@@ -25,16 +25,14 @@ int main(int argc, char **argv)
      */
     CGame game;
     SDL_Event e;
+    game.startGame();
+    CEsWorldScreen *screen = game.getScreen();
     time_t starttime;
     time(&starttime);
     time_t timepassed;
     static int frames = 0;
     static bool first = true;
     static float fps = 0.0f;
-    game.startGame();
-    CEsWorldScreen *screen = game.getScreen();
-    /*CDialog dialogBox;
-    dialogBox.setScreen(screen);*/
     while(game.isGameRunning()) {
         time(&timepassed);
         if(first) {
@@ -57,18 +55,6 @@ int main(int argc, char **argv)
             // quit on escape
             if(e.type == SDL_KEYDOWN) {
                 switch(e.key.keysym.sym) {
-                   /*case SDLK_1:
-                        useClip = 0;
-                        break;
-                   case SDLK_2:
-                        useClip = 1;
-                        break;
-                   case SDLK_3:
-                        useClip = 2;
-                        break;
-                   case SDLK_4:
-                        useClip = 3;
-                        break;*/
                    case SDLK_ESCAPE:
                         game.stopGame();
                         break;
@@ -82,33 +68,15 @@ int main(int argc, char **argv)
         }
         frames++;
         timepassed++;
-        screen->drawScreen(0, 0, 640, 480);
-        //dialogBox.createDialog(10, 10, 50, 20);
-        //dialogBox.showDialog();
-        //game.drawText(to_string(fps), 10, 10);
-        //game.drawText(to_string(game.getLevel()), 580, 10);
+        screen->drawScreen("background.png", 0, 0, 640, 480);
+
+        //screen->drawText(to_string(fps), 10, 10);
+        //screen->drawText(to_string(game.getLevel()), 580, 10);
+        //CDialog dialogBox;
+        //dialogBox.createDialog("dialog_bk.png", 10, 10, 32, 32);
     }
 
-    /*SDL_Color color = {255, 255, 255, 255};
-    //SDL_Texture *background = loadTexture(resourcePath + "background.png", sdlRenderer);
-    //SDL_Texture *image = loadTexture(resourcePath + "color_sheet.png", sdlRenderer);
-    SDL_Texture *image = renderText("TTF fonts are cool!", resourcePath + "sample.ttf",
-                                    color, 64, sdlRenderer);
-    if(image == nullptr) {
-        cleanup(sdlRenderer, sdlWindow);
-        TTF_Quit();
-        SDL_Quit();
-        return 1;
-    }
-
-    /*if(background == nullptr || image == nullptr) {
-        cleanup(background, imagRenderer, sdlWindow);
-        IMG_Quit();
-        SDL_Quit();e, sdl
-        return 1;
-    }
-
-    int xTiles = SCREEN_WIDTH / TILE_SIZE;
+    /*int xTiles = SCREEN_WIDTH / TILE_SIZE;
     int yTiles = SCREEN_HEIGHT / TILE_SIZE;
 
     for(int i = 0; i < xTiles * yTiles; ++i) {
@@ -141,6 +109,7 @@ int main(int argc, char **argv)
 
     // specify the clip to start with
     int useClip = 0;*/
+    screen->deleteScreen();
     return 0;
 }
 

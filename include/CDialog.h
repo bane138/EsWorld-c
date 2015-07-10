@@ -23,7 +23,8 @@ public:
      * of dialogs we come up with.
      */
     void setScreen(CEsWorldScreen *screen);
-    void createDialog(int x, int y, int width, int height);
+    void createImageDialog(const std::string background, int x, int y, int width, int height);
+    void createBasicDialog(void);
     /* showDialog display at x y */
     bool showDialog();
     bool closeDialog(void);
