@@ -23,15 +23,18 @@ CGame::~CGame(void)
 
 /**
  * @brief CGame::startGame
+ * Set m_bIsRunning to true
+ * Setup the game
  */
 void CGame::startGame(void)
 {
     m_bIsRunning = true;
-    this->setupGame();
+    setupGame();
 }
 
 /**
  * @brief CGame::stopGame
+ * Set m_bIsRunning to false
  */
 void CGame::stopGame(void)
 {
@@ -47,8 +50,8 @@ void CGame::setupGame(void)
     /**
      * Setup screen for the game
      */
-    this->m_oScreen = new CEsWorldScreen();
-    this->m_oScreen->setupScreen();
+    CEsWorldScreen m_sdlScreen;
+    m_sdlScreen.setupScreen();
     /**
     //CPlayer *m_oPlayer;
     */
@@ -65,12 +68,12 @@ void CGame::setupGame(void)
 }
 
 /**
-  * Draw the screen
+  * Return the screen instance for drawing
   */
 CEsWorldScreen* CGame::getScreen(void)
 {
-    this->m_oScreen->setupScreen();
-    return this->m_oScreen;
+    m_sdlScreen->setupScreen();
+    return m_sdlScreen;
 }
 
 

@@ -26,15 +26,15 @@ int main(int argc, char **argv)
     CGame game;
     SDL_Event e;
     game.startGame();
-    CEsWorldScreen *screen = game.getScreen();
+    /*CEsWorldScreen *screen = game.getScreen();
     time_t starttime;
     time(&starttime);
     time_t timepassed;
     static int frames = 0;
     static bool first = true;
-    static float fps = 0.0f;
+    static float fps = 0.0f;*/
     while(game.isGameRunning()) {
-        time(&timepassed);
+        /*time(&timepassed);
         if(first) {
             frames = 0;
             starttime = timepassed;
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
             fps = (double) frames / (timepassed - starttime);
             starttime = timepassed;
             frames = 0;
-        }
+        }*/
 
         std::cout << "The game is running!" << endl;
         while(SDL_PollEvent(&e)) {
@@ -66,12 +66,12 @@ int main(int argc, char **argv)
                 game.stopGame();
             }*/
         }
-        frames++;
+        /*frames++;
         timepassed++;
+        screen->drawScreen("background.png", 0, 0, 640, 480);
         CDialog dialogBox;
         dialogBox.setScreen(screen);
-        dialogBox.createBasicDialog();
-        //screen->drawScreen("background.png", 0, 0, 640, 480);
+        dialogBox.createBasicDialog();*/
 
         //screen->drawText(to_string(fps), 10, 10);
         //screen->drawText(to_string(game.getLevel()), 580, 10);
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 
     // specify the clip to start with
     int useClip = 0;*/
-    screen->deleteScreen();
+    //screen->deleteScreen();
     return 0;
 }
 

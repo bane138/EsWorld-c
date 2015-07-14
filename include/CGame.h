@@ -1,10 +1,9 @@
 #ifndef CGAME_H
 #define CGAME_H
 #include "CEsWorldScreen.h"
+#include <string>
 #include <map>
 #include <vector>
-
-using namespace std;
 
 class CGame
 {
@@ -27,7 +26,7 @@ private:
     /* Properties */
     bool m_bIsRunning;
     int m_nLevel;
-    CEsWorldScreen *m_oScreen;
+    CEsWorldScreen *m_sdlScreen;
     std::map<std::string, int> m_mGameData;
     //CPlayer m_oPlayer
 };
