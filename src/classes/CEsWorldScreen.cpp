@@ -70,7 +70,7 @@ bool CEsWorldScreen::setupScreen(void)
 
 std::string CEsWorldScreen::getResPath(void)
 {
-    return getResourcePath("World001");
+    return getResourcePath(RESOURCE_PATH);
 }
 
 /**
@@ -87,7 +87,7 @@ void CEsWorldScreen::deleteScreen(void)
  */
 void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, int w, int h)
 {
-    m_tBackground = loadTexture(getResourcePath("World001") + image, m_sdlRenderer);
+    m_tBackground = loadTexture(getResourcePath(RESOURCE_PATH) + image, m_sdlRenderer);
     renderTexture(m_tBackground, m_sdlRenderer, x, y, w, h);
 }
 
@@ -98,7 +98,7 @@ void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, int w, i
  */
 void CEsWorldScreen::drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect clip)
 {
-    m_tBackground = loadTexture(getResourcePath("World001") + image,
+    m_tBackground = loadTexture(getResourcePath(RESOURCE_PATH) + image,
                                               m_sdlRenderer);
     renderTexture(m_tBackground, m_sdlRenderer, destination, &clip);
 }
@@ -111,7 +111,7 @@ void CEsWorldScreen::drawScreen(const std::string &image, SDL_Rect destination, 
  */
 void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, SDL_Rect clip)
 {
-    m_tBackground = loadTexture(getResourcePath("World001") + image,
+    m_tBackground = loadTexture(getResourcePath(RESOURCE_PATH) + image,
                                               m_sdlRenderer);
     renderTexture(m_tBackground, m_sdlRenderer, x, y, &clip);
 }
@@ -124,7 +124,7 @@ void CEsWorldScreen::drawText(const std::string &text, int x, int y)
 {
     int tW, tH;
     SDL_Color color = {255, 255, 255, 0};
-    SDL_Texture *textToRender = renderText(text, getResourcePath("World001") + "sample.ttf",
+    SDL_Texture *textToRender = renderText(text, getResourcePath(RESOURCE_PATH) + "sample.ttf",
                                                  color, 22, m_sdlRenderer);
     renderTexture(textToRender, m_sdlRenderer, x, y);
 }

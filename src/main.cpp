@@ -69,17 +69,14 @@ int main(int argc, char **argv)
         frames++;
         timepassed++;
         SDL_Rect clip = { 0, 0, 100, 100 };
-        SDL_Rect backClip = { 0, 0, 640, 480 };
         SDL_RenderClear(screen.getRenderer());
-        screen.drawScreen("background.png", 0, 0, backClip);
-        screen.drawScreen("color_sheet.png", 10, 10, clip);
+        screen.drawScreen("background.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        //screen.drawScreen("color_sheet.png", 10, 10, clip);
         screen.drawText(to_string(fps), 10, 10);
+        screen.drawText(to_string(game.getLevel()), 580, 10);
         SDL_RenderPresent(screen.getRenderer());
         //CDialog dialogBox;;
         //dialogBox.createImageDialog(&screen, "color_sheet.png", 10, 10, 100, 100);
-
-
-        //screen.drawText(to_string(game.getLevel()), 580, 10);
     }
 
     /*int xTiles = SCREEN_WIDTH / TILE_SIZE;

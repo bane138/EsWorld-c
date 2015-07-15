@@ -8,6 +8,7 @@
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
+#define RESOURCE_PATH "World001"
 
 class CEsWorldScreen
 {
