@@ -39,13 +39,9 @@ void CDialog::setScreen(CEsWorldScreen *screen)
  * @param height
  */
 void CDialog::createImageDialog(CEsWorldScreen *screen, std::string background,
-                                int x, int y, int width, int height)
+                                int x, int y, SDL_Rect clip)
 {
-    m_recClip->x = x;
-    m_recClip->y = y;
-    m_recClip->w = width;
-    m_recClip->h = height;
-    screen->drawScreen(screen->getResPath() + background, x, y, *m_recClip);
+    screen->drawScreen(background, x, y, clip);
 
 }
 
@@ -63,8 +59,6 @@ void CDialog::createBasicDialog(CEsWorldScreen *screen, int x, int y,
     SDL_SetRenderDrawColor(screen->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
     SDL_RenderCopy(screen->getRenderer(), NULL, &dialog, &renderQuad);
     //SDL_RenderFillRect(screen->getRenderer(), &dialog);
-
-    SDL_RenderPresent(screen->getRenderer());
 }
 
 /**

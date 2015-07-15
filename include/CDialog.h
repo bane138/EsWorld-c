@@ -34,7 +34,7 @@ public:
      * @param height
      */
     void createImageDialog(CEsWorldScreen *screen, std::string background,
-                           int x, int y, int width, int height);
+                           int x, int y, SDL_Rect clip);
     /**
      * @brief createBasicDialog
      */
