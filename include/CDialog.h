@@ -33,11 +33,13 @@ public:
      * @param width
      * @param height
      */
-    void createImageDialog(const std::string background, int x, int y, int width, int height);
+    void createImageDialog(CEsWorldScreen *screen, std::string background,
+                           int x, int y, int width, int height);
     /**
      * @brief createBasicDialog
      */
-    void createBasicDialog(void);
+    void createBasicDialog(CEsWorldScreen *screen, int x, int y,
+                           int m_nWidth, int m_nHeight);
     /* showDialog display at x y */
     void showDialog();
     /**
@@ -58,7 +60,7 @@ public:
 private:
     void setWidth(int width) { m_nWidth = width; }
     void setHeight(int height) { m_nHeight = height; }
-    CEsWorldScreen *m_oScreen;
+    //CEsWorldScreen m_sdlScreen;
     SDL_Rect *m_recDestination;
     SDL_Rect *m_recClip;
     int m_nWidth;

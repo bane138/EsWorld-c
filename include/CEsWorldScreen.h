@@ -20,15 +20,15 @@ public:
     bool setupScreen(void);
     /* Draw screen */
     void drawScreen(const std::string &image, int x, int y, int w, int h);
-    void drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect *clip);
-    void drawScreen(const std::string &image, int x, int y, SDL_Rect *clip);
-    void render(void);
+    void drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect clip);
+    void drawScreen(const std::string &image, int x, int y, SDL_Rect clip);
     /* Create text */
     void drawText(const std::string &text, int x, int y);
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }
     SDL_Renderer* getRenderer(void) { return m_sdlRenderer; }
+    std::string getResPath(void);
     /* Delete screen */
     void deleteScreen(void);
 private:

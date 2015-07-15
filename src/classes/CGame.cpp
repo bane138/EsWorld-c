@@ -70,9 +70,9 @@ void CGame::setupGame(void)
 /**
   * Return the screen instance for drawing
   */
-CEsWorldScreen* CGame::getScreen(void)
+CEsWorldScreen CGame::getScreen(void)
 {
-    m_sdlScreen->setupScreen();
+    m_sdlScreen.setupScreen();
     return m_sdlScreen;
 }
 

@@ -16,7 +16,7 @@ public:
      */
     void startGame(void);
     void stopGame(void);
-    CEsWorldScreen* getScreen(void);
+    CEsWorldScreen getScreen(void);
 
     bool isGameRunning(void) { return m_bIsRunning; }
     int getLevel(void) { return m_nLevel; }
@@ -26,7 +26,7 @@ private:
     /* Properties */
     bool m_bIsRunning;
     int m_nLevel;
-    CEsWorldScreen *m_sdlScreen;
+    CEsWorldScreen m_sdlScreen;
     std::map<std::string, int> m_mGameData;
     //CPlayer m_oPlayer
 };

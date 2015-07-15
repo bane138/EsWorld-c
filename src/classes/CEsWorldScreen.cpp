@@ -8,8 +8,8 @@
  */
 CEsWorldScreen::CEsWorldScreen(void)
 {
-    this->m_nWidth = SCREEN_WIDTH;
-    this->m_nHeight = SCREEN_HEIGHT;
+    m_nWidth = SCREEN_WIDTH;
+    m_nHeight = SCREEN_HEIGHT;
 }
 
 /**
@@ -46,27 +46,31 @@ bool CEsWorldScreen::setupScreen(void)
     }
 
     // SDL Window
-    this->m_sdlWindow = SDL_CreateWindow("EsWorld",
+    m_sdlWindow = SDL_CreateWindow("EsWorld",
                                             SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,
-                                            this->m_nWidth, this->m_nHeight,
+                                            m_nWidth, m_nHeight,
                                             SDL_WINDOW_SHOWN);
-    if(this->m_sdlWindow == nullptr) {
+    if(m_sdlWindow == nullptr) {
         logSDLError(std::cout, "SDL_CreateWindow");
         SDL_Quit();
         return false;
     }
 
-    //this->m_sSurface = SDL_GetWindowSurface(this->m_sdlWindow);
-
     // SDL Renderer
-    this->m_sdlRenderer = SDL_CreateRenderer(m_sdlWindow, -1,
+    m_sdlRenderer = SDL_CreateRenderer(m_sdlWindow, -1,
                                                     SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if(this->m_sdlRenderer == nullptr) {
+    if(m_sdlRenderer == nullptr) {
         logSDLError(std::cout, "SDL_Renderer");
         SDL_Quit();
         return false;
     }
+
     return true;
+}
+
+std::string CEsWorldScreen::getResPath(void)
+{
+    return getResourcePath("World001");
 }
 
 /**
@@ -74,7 +78,7 @@ bool CEsWorldScreen::setupScreen(void)
  */
 void CEsWorldScreen::deleteScreen(void)
 {
-    cleanup(this->m_tBackground, this->m_sdlRenderer, this->m_sdlWindow);
+    cleanup(m_tBackground, m_sdlRenderer, m_sdlWindow);
 }
 
 /**
@@ -83,11 +87,8 @@ void CEsWorldScreen::deleteScreen(void)
  */
 void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, int w, int h)
 {
-    this->m_tBackground = this->loadTexture(getResourcePath("World001") + image,
-                                              this->m_sdlRenderer);
-    SDL_RenderClear(this->m_sdlRenderer);
-    this->renderTexture(this->m_tBackground, this->m_sdlRenderer, x, y, w, h);
-    SDL_RenderPresent(this->m_sdlRenderer);
+    m_tBackground = loadTexture(getResourcePath("World001") + image, m_sdlRenderer);
+    renderTexture(m_tBackground, m_sdlRenderer, x, y, w, h);
 }
 
 /**
@@ -95,13 +96,11 @@ void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, int w, i
  * @param destination
  * @param clip
  */
-void CEsWorldScreen::drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect *clip)
+void CEsWorldScreen::drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect clip)
 {
-    this->m_tBackground = this->loadTexture(getResourcePath("World001") + image,
-                                              this->m_sdlRenderer);
-    SDL_RenderClear(this->m_sdlRenderer);
-    this->renderTexture(this->m_tBackground, this->m_sdlRenderer, destination, clip);
-    SDL_RenderPresent(this->m_sdlRenderer);
+    m_tBackground = loadTexture(getResourcePath("World001") + image,
+                                              m_sdlRenderer);
+    renderTexture(m_tBackground, m_sdlRenderer, destination, &clip);
 }
 
 /**
@@ -110,13 +109,11 @@ void CEsWorldScreen::drawScreen(const std::string &image, SDL_Rect destination, 
  * @param y
  * @param clip
  */
-void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, SDL_Rect *clip)
+void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, SDL_Rect clip)
 {
-    this->m_tBackground = this->loadTexture(getResourcePath("World001") + image,
-                                              this->m_sdlRenderer);
-    SDL_RenderClear(this->m_sdlRenderer);
-    this->renderTexture(this->m_tBackground, this->m_sdlRenderer, x, y, clip);
-    SDL_RenderPresent(this->m_sdlRenderer);
+    m_tBackground = loadTexture(getResourcePath("World001") + image,
+                                              m_sdlRenderer);
+    renderTexture(m_tBackground, m_sdlRenderer, x, y, &clip);
 }
 
 /**
@@ -127,25 +124,9 @@ void CEsWorldScreen::drawText(const std::string &text, int x, int y)
 {
     int tW, tH;
     SDL_Color color = {255, 255, 255, 0};
-    SDL_Texture *textToRender = this->renderText(text, getResourcePath("World001") + "sample.ttf",
-                                                 color, 22, this->m_sdlRenderer);
-    SDL_QueryTexture(textToRender, NULL, NULL, &tW, &tH);
-    /*SDL_Rect *m_recClip;
-    m_recClip->x = x;
-    m_recClip->y = y;
-    m_recClip->w = tW;
-    m_recClip->h = tH;*/
-    SDL_RenderClear(this->m_sdlRenderer);
-    this->renderTexture(textToRender, this->m_sdlRenderer, x, y);
-    SDL_RenderPresent(this->m_sdlRenderer);
-}
-
-/**
- * @brief CEsWorldScreen::render
- */
-void CEsWorldScreen::render(void)
-{
-    SDL_RenderPresent(this->m_sdlRenderer);
+    SDL_Texture *textToRender = renderText(text, getResourcePath("World001") + "sample.ttf",
+                                                 color, 22, m_sdlRenderer);
+    renderTexture(textToRender, m_sdlRenderer, x, y);
 }
 
 /**
