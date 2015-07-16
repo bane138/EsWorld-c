@@ -22,43 +22,45 @@ CDialog::~CDialog(void)
 }
 
 /**
- * @brief CDialog::setScreen
- * @param screen
- */
-void CDialog::setScreen(CEsWorldScreen *screen)
-{
-    //m_sdlScreen = screen;
-}
-
-/**
  * @brief CDialog::createDialog
- * @param background
- * @param x
- * @param y
- * @param width
- * @param height
+ * Create a dialog box with an image background
+ * @param *screen CEsWorldScreen pointer to screen
+ * @param background string the background image to use
+ * @param x int x position
+ * @param y int y position
+ * @param clip SDL_Rect the clip coordinants of the background image
  */
 void CDialog::createImageDialog(CEsWorldScreen *screen, std::string background,
                                 int x, int y, SDL_Rect clip)
 {
     screen->drawScreen(background, x, y, clip);
-
+    m_nPositionX = x;
+    m_nPositionY = y;
+    m_nWidth = clip.w;
+    m_nHeight = clip.h;
+    m_bState = true;
 }
 
+/**
+ * @brief CDialog::createBasicDialog
+ * @param *screen CEsWorldScreen pointer to screen
+ * @param x int x position
+ * @param y int y position
+ * @param m_nWidth int width
+ * @param m_nHeight int height
+ */
 void CDialog::createBasicDialog(CEsWorldScreen *screen, int x, int y,
                                 int m_nWidth, int m_nHeight)
 {
     SDL_SetRenderDrawColor(screen->getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_Rect renderQuad = { x, y, m_nWidth, m_nHeight };
-    SDL_RenderClear(screen->getRenderer());
-    SDL_Rect dialog = { 10, 10, 100, 200 };
-    if(&dialog != NULL) {
-        renderQuad.w = dialog.w;
-        renderQuad.h = dialog.h;
-    }
     SDL_SetRenderDrawColor(screen->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
-    SDL_RenderCopy(screen->getRenderer(), NULL, &dialog, &renderQuad);
-    //SDL_RenderFillRect(screen->getRenderer(), &dialog);
+    SDL_RenderFillRect(screen->getRenderer(), &renderQuad);
+    m_nPositionX = x;
+    m_nPositionY = y;
+    m_nWidth = m_nWidth;
+    m_nHeight = m_nHeight;
+    m_bState = true;
 }
 
 /**
@@ -66,7 +68,7 @@ void CDialog::createBasicDialog(CEsWorldScreen *screen, int x, int y,
  */
 void CDialog::showDialog()
 {
-    this->m_nState = true;
+    m_bState = true;
 }
 
 /**
@@ -74,5 +76,5 @@ void CDialog::showDialog()
  */
 void CDialog::closeDialog()
 {
-    this->m_nState = false;
+    m_bState = false;
 }

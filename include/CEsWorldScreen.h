@@ -24,7 +24,8 @@ public:
     void drawScreen(const std::string &image, SDL_Rect destination, SDL_Rect clip);
     void drawScreen(const std::string &image, int x, int y, SDL_Rect clip);
     /* Create text */
-    void drawText(const std::string &text, int x, int y);
+    void drawText(const std::string &text, int x, int y,
+                  SDL_Color color = { 0x00, 0x00, 0x00, 0x00 });
     /* Accessor functions */
     int getWidth(void) const { return m_nWidth; }
     int getHeight(void) const { return m_nHeight; }

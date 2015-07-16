@@ -21,53 +21,52 @@ public:
     /* Destructor */
     ~CDialog(void);
     /**
-     * @brief setScreen
-     * @param screen
-     */
-    void setScreen(CEsWorldScreen *screen);
-    /**
-     * @brief createImageDialog
-     * @param background
-     * @param x
-     * @param y
-     * @param width
-     * @param height
+     * @brief CDialog::createDialog
+     * Create a dialog box with an image background
+     * @param *screen CEsWorldScreen pointer to screen
+     * @param background string the background image to use
+     * @param x int x position
+     * @param y int y position
+     * @param clip SDL_Rect the clip coordinants of the background image
      */
     void createImageDialog(CEsWorldScreen *screen, std::string background,
                            int x, int y, SDL_Rect clip);
     /**
-     * @brief createBasicDialog
+     * @brief CDialog::createBasicDialog
+     * @param *screen CEsWorldScreen pointer to screen
+     * @param x int x position
+     * @param y int y position
+     * @param m_nWidth int width
+     * @param m_nHeight int height
      */
     void createBasicDialog(CEsWorldScreen *screen, int x, int y,
                            int m_nWidth, int m_nHeight);
-    /* showDialog display at x y */
+    /**
+     * @brief showDialog
+     */
     void showDialog();
     /**
      * @brief closeDialog
-     * @return
      */
     void closeDialog(void);
     /**
      * @brief getWidth
-     * @return
+     * @return int m_nWidth
      */
     int getWidth(void) const { return m_nWidth; }
     /**
      * @brief getHeight
-     * @return
+     * @return int m_nHeight
      */
     int getHeight(void) const { return m_nHeight; }
 private:
     void setWidth(int width) { m_nWidth = width; }
     void setHeight(int height) { m_nHeight = height; }
-    //CEsWorldScreen m_sdlScreen;
-    SDL_Rect *m_recDestination;
-    SDL_Rect *m_recClip;
     int m_nWidth;
     int m_nHeight;
     int m_nPositionX;
     int m_nPositionY;
-    int m_nState;
+    bool m_bState;
 };
 
 #endif // CDIALOG_H

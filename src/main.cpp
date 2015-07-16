@@ -68,51 +68,21 @@ int main(int argc, char **argv)
         }
         frames++;
         timepassed++;
-        CDialog dialogBox;
         SDL_Rect clip = { 0, 0, 100, 100 };
         SDL_RenderClear(screen.getRenderer());
         screen.drawScreen("background.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         //screen.drawScreen("color_sheet.png", 10, 10, clip);
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
-        dialogBox.createImageDialog(&screen, "color_sheet.png", 100, 100, clip);
+        CDialog dialogBox1;
+        dialogBox1.createImageDialog(&screen, "color_sheet.png", 100, 100, clip);
+        CDialog dialogBox2;
+        dialogBox2.createBasicDialog(&screen, 50, 50, 200, 100);
+        screen.drawText(to_string(dialogBox1.getWidth()), 400, 400);
         SDL_RenderPresent(screen.getRenderer());
     }
 
-    /*int xTiles = SCREEN_WIDTH / TILE_SIZE;
-    int yTiles = SCREEN_HEIGHT / TILE_SIZE;
-
-    for(int i = 0; i < xTiles * yTiles; ++i) {
-        int x = i % xTiles;
-        int y = i / xTiles;
-        renderTexture(background, sdlRenderer, x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-    }*/
-    /*int bW, bH;
-    SDL_QueryTexture(background, NULL, NULL, &bW, &bH);
-    renderTexture(background, sdlRenderer, 0, 0);
-    renderTexture(background, sdlRenderer, bW, 0);
-    renderTexture(background, sdlRenderer, 0, bH);
-    renderTexture(background, sdlRenderer, bW, bH);*/
-
-    //int iW = 100, iH = 100;
-    /*int iW, iH;
-    SDL_QueryTexture(image, NULL, NULL, &iW, &iH);
-    int x = SCREEN_WIDTH / 2 - iW / 2;
-    int y = SCREEN_HEIGHT / 2 - iH / 2;
-    //renderTexture(image, sdlRenderer, x, y);
-
-    // Setup the clips for out image
-    SDL_Rect clips[4];
-    for(int i = 0; i < 4; ++i) {
-        clips[i].x = i / 2 * iW;
-        clips[i].y = i % 2 * iH;
-        clips[i].w = iW;
-        clips[i].h = iH;
-    }
-
-    // specify the clip to start with
-    int useClip = 0;*/
-    //screen->deleteScreen();
+    screen.deleteScreen();
     return 0;
 }
 

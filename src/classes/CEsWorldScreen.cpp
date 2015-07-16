@@ -120,10 +120,8 @@ void CEsWorldScreen::drawScreen(const std::string &image, int x, int y, SDL_Rect
   * CEsWorldScreen::createText
   * @param std::string text the text
   */
-void CEsWorldScreen::drawText(const std::string &text, int x, int y)
+void CEsWorldScreen::drawText(const std::string &text, int x, int y, SDL_Color color)
 {
-    int tW, tH;
-    SDL_Color color = {255, 255, 255, 0};
     SDL_Texture *textToRender = renderText(text, getResourcePath(RESOURCE_PATH) + "sample.ttf",
                                                  color, 22, m_sdlRenderer);
     renderTexture(textToRender, m_sdlRenderer, x, y);
