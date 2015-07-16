@@ -36,11 +36,27 @@ public:
      * @param *screen CEsWorldScreen pointer to screen
      * @param x int x position
      * @param y int y position
-     * @param m_nWidth int width
-     * @param m_nHeight int height
+     * @param width int width
+     * @param height int height
      */
     void createBasicDialog(CEsWorldScreen *screen, int x, int y,
-                           int m_nWidth, int m_nHeight);
+                           int width, int height,
+                           SDL_Color color = {0xFF, 0xFF, 0xFF, 0xFF});
+    /**
+     * @brief createTextDialog
+     * Create a basic text dialog
+     * @param *screen CEsWorldScreen pointer to screen
+     * @param x int x position
+     * @param y int y position
+     * @param width int width
+     * @param height int height
+     * @param text string text to display
+     */
+    void createTextDialog(CEsWorldScreen *screen, int x, int y,
+                          int width, int height,
+                          const std::string *text,
+                          SDL_Color fillColor = {0xFF, 0xFF, 0xFF, 0xFF},
+                          SDL_Color textColor = {0x00, 0x00, 0x00, 0x00});
     /**
      * @brief showDialog
      */

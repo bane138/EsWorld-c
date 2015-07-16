@@ -78,6 +78,9 @@ int main(int argc, char **argv)
         dialogBox1.createImageDialog(&screen, "color_sheet.png", 100, 100, clip);
         CDialog dialogBox2;
         dialogBox2.createBasicDialog(&screen, 50, 50, 200, 100);
+        CDialog dialogBox3;
+        const std::string text = "This is cool";
+        dialogBox3.createTextDialog(&screen, 200, 200, 200, 100, &text);
         screen.drawText(to_string(dialogBox1.getWidth()), 400, 400);
         SDL_RenderPresent(screen.getRenderer());
     }
