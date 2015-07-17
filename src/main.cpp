@@ -6,6 +6,7 @@
 
 #include "CGame.h"
 #include "CDialog.h"
+#include "CPlayer.h"
 
 #include <time.h>
 
@@ -26,7 +27,11 @@ int main(int argc, char **argv)
     CGame game;
     SDL_Event e;
     game.startGame();
-    CEsWorldScreen screen = game.getScreen();
+    CEsWorldScreen screen = game.getScreen();    
+    CDialog dialogBox1;
+    CDialog dialogBox2;
+    CDialog dialogBox3;
+    CPlayer player;
     time_t starttime;
     time(&starttime);
     time_t timepassed;
@@ -55,10 +60,22 @@ int main(int argc, char **argv)
             // quit on escape
             if(e.type == SDL_KEYDOWN) {
                 switch(e.key.keysym.sym) {
-                   case SDLK_ESCAPE:
+                    case SDLK_w:
+                        player.setYPosition(player.getYPosition() + 1);
+                        break;
+                    case SDLK_s:
+                        player.setYPosition(player.getYPosition() - 1);
+                        break;
+                    case SDLK_d:
+                        player.setXPosition(player.getXPosition() + 1);
+                        break;
+                    case SDLK_a:
+                        player.setXPosition(player.getXPosition() - 1);
+                        break;
+                    case SDLK_ESCAPE:
                         game.stopGame();
                         break;
-                   default:
+                    default:
                         break;
                 }
             }
@@ -74,14 +91,12 @@ int main(int argc, char **argv)
         //screen.drawScreen("color_sheet.png", 10, 10, clip);
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
-        CDialog dialogBox1;
         dialogBox1.createImageDialog(&screen, "color_sheet.png", 100, 100, clip);
-        CDialog dialogBox2;
         dialogBox2.createBasicDialog(&screen, 50, 50, 200, 100);
-        CDialog dialogBox3;
         const std::string text = "This is cool";
         dialogBox3.createTextDialog(&screen, 200, 200, 200, 100, &text);
         screen.drawText(to_string(dialogBox1.getWidth()), 400, 400);
+        player.drawPlayer(&screen);
         SDL_RenderPresent(screen.getRenderer());
     }
 
