@@ -23,6 +23,6 @@ CPlayer::~CPlayer(void)
 void CPlayer::drawPlayer(CEsWorldScreen *screen)
 {
     std::string background = "color_sheet.png";
-    screen->drawScreen(background, m_recBounds.x, m_recBounds.y,
+    screen->drawScreen(background, m_nXPosition, m_nYPosition,
                        m_recBounds);
 }

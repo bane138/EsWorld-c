@@ -27,21 +27,21 @@ public:
     /**
      * @brief getXPosition
      */
-    int getXPosition(void) { return m_recBounds.x; }
+    int getXPosition(void) { return this->m_nXPosition; }
     /**
      * @brief setXPosition
      * @param x
      */
-    void setXPosition(int x) { m_recBounds.x = x; }
+    void setXPosition(int x) { m_nXPosition = x; }
     /**
      * @brief getYPosition
      */
-    int getYPosition(void) { return m_recBounds.y; }
+    int getYPosition(void) { return this->m_nYPosition; }
     /**
      * @brief setYPosition
      * @param y
      */
-    void setYPosition(int y) { m_recBounds.y = y; }
+    void setYPosition(int y) { m_nYPosition = y; }
     /**
      * @brief getLives
      */
@@ -50,6 +50,8 @@ public:
     void drawPlayer(CEsWorldScreen *screen);
 private:
     int m_nLives;
+    int m_nXPosition;
+    int m_nYPosition;
     SDL_Rect m_recBounds;
 };
 
