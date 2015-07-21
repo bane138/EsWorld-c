@@ -7,6 +7,7 @@
 #include "CGame.h"
 #include "CDialog.h"
 #include "CPlayer.h"
+#include "CTexture.h"
 
 #include <time.h>
 
@@ -32,6 +33,7 @@ int main(int argc, char **argv)
     CDialog dialogBox2;
     CDialog dialogBox3;
     CPlayer player;
+    CTexture dude;
     player.setXPosition(100);
     player.setYPosition(100);
     time_t starttime;
@@ -93,6 +95,8 @@ int main(int argc, char **argv)
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
         player.drawPlayer(&screen);
+        dude.loadFromFile(&screen, screen.getResPath() + "dude.png");
+        dude.render(&screen, 100, 100);
         SDL_RenderPresent(screen.getRenderer());
     }
 
