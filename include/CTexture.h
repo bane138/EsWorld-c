@@ -23,7 +23,8 @@ public:
      * @param string filePath
      * @return bool
      */
-    bool loadFromFile(CEsWorldScreen *screen, std::string filePath);
+    bool loadFromFile(CEsWorldScreen *screen, std::string filePath,
+                      Uint8 red = 0xFF, Uint8 green = 0xFF, Uint8 blue = 0xFF);
     /**
      * @brief free
      * Free texture
@@ -35,7 +36,9 @@ public:
      * @param int x
      * @param int y
      */
-    void render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip = nullptr);
+    void render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip = nullptr,
+                double angle = 0.0, SDL_Point* center = nullptr,
+                SDL_RendererFlip flip = SDL_FLIP_NONE);
     /**
      * @brief setAlpha
      * Set alpha (transparency)

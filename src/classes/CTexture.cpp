@@ -26,7 +26,8 @@ CTexture::~CTexture(void)
  * @param string filePath
  * @return bool
  */
-bool CTexture::loadFromFile(CEsWorldScreen *screen, std::string filePath)
+bool CTexture::loadFromFile(CEsWorldScreen *screen, std::string filePath,
+                            Uint8 red, Uint8 green, Uint8 blue)
 {
     // Get rid of any preexisting texture
     free();
@@ -40,7 +41,8 @@ bool CTexture::loadFromFile(CEsWorldScreen *screen, std::string filePath)
         std::cout << "IMG_Load error: " << SDL_GetError() << std::endl;
     } else {
         // Color key image
-        SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 0xFF, 0xFF));
+        SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format,
+                                                            red, green, blue));
         newTexture = SDL_CreateTextureFromSurface(screen->getRenderer(), loadedSurface);
     }
 
@@ -101,7 +103,8 @@ void CTexture::setColor(Uint8 red, Uint8 green, Uint8 blue)
     SDL_SetTextureColorMod(m_sdlTexture, red, green, blue);
 }
 
-void CTexture::render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip)
+void CTexture::render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip,
+                      double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
     // Set rendering space and render to screen
     SDL_Rect renderQuad = { x, y, m_nWidth, m_nHeight };
@@ -109,5 +112,6 @@ void CTexture::render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip)
         renderQuad.w = clip->w;
         renderQuad.h = clip->h;
     }
-    SDL_RenderCopy(screen->getRenderer(), m_sdlTexture, clip, &renderQuad);
+    SDL_RenderCopyEx(screen->getRenderer(), m_sdlTexture, clip, &renderQuad,
+                   angle, center, flip);
 }

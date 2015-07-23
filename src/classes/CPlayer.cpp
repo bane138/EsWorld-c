@@ -22,7 +22,7 @@ CPlayer::~CPlayer(void)
 
 void CPlayer::drawPlayer(CEsWorldScreen *screen)
 {
-    std::string background = "color_sheet.png";
-    screen->drawScreen(background, m_nXPosition, m_nYPosition,
-                       m_recBounds);
+    m_tTexture.loadFromFile(screen, screen->getResPath() + "dude.png",
+                            0, 0xFF, 0xFF);
+    m_tTexture.render(screen, m_nXPosition, m_nYPosition, &m_recBounds);
 }

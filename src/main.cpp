@@ -65,6 +65,8 @@ int main(int argc, char **argv)
     const int WALKING_ANIMATION_FRAMES = 4;
     SDL_Rect spriteClips[WALKING_ANIMATION_FRAMES];
     int frame = 0;
+    double degrees = 0;
+    SDL_RendererFlip flipType = SDL_FLIP_NONE;
     CGame game;
     SDL_Event e;
     game.startGame();
@@ -74,8 +76,11 @@ int main(int argc, char **argv)
     CDialog dialogBox3;
     CPlayer player;
     CTexture sprite;
+    CTexture arrow;
+    arrow.loadFromFile(&screen, screen.getResPath() + "arrow.png");
     // for animation
-    if(!sprite.loadFromFile(&screen, screen.getResPath() + "dude_walking_left.png")) {
+    if(!sprite.loadFromFile(&screen, screen.getResPath() + "dude_walking_left.png",
+                            0, 0xFF, 0xFF)) {
         std::cout << "IMG_Load error: " << SDL_GetError() << std::endl;
     } else {
         // Set sprite clips
@@ -142,6 +147,21 @@ int main(int argc, char **argv)
                     case SDLK_a:
                         player.setXPosition(player.getXPosition() - 10);
                         break;
+                    case SDLK_RIGHT:
+                        degrees -= 60;
+                        break;
+                    case SDLK_LEFT:
+                        degrees += 60;
+                        break;
+                    case SDLK_h:
+                        flipType = SDL_FLIP_HORIZONTAL;
+                        break;
+                    case SDLK_v:
+                        flipType = SDL_FLIP_VERTICAL;
+                        break;
+                    case SDLK_n:
+                        flipType = SDL_FLIP_NONE;
+                        break;
                     case SDLK_ESCAPE:
                         game.stopGame();
                         break;
@@ -160,13 +180,16 @@ int main(int argc, char **argv)
         //screen.drawScreen("color_sheet.png", 10, 10, clip);
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
-        //player.drawPlayer(&screen);
+        player.drawPlayer(&screen);
         SDL_Rect* currentClip = &spriteClips[frame/4];
-        sprite.setBlendMode(SDL_BLENDMODE_BLEND);
+        //sprite.setBlendMode(SDL_BLENDMODE_BLEND);
         //sprite.setColor(0, 0, 255);
         //sprite.setAlpha(50);
         sprite.render(&screen,(SCREEN_WIDTH / 2) - (currentClip->w / 2),
                       (SCREEN_HEIGHT / 2) - (currentClip->h / 2), currentClip);
+        arrow.render(&screen,
+                     300, 200,
+                     NULL, degrees, NULL, flipType);
         SDL_RenderPresent(screen.getRenderer());
         frame++;
         if(frame / 4 >= WALKING_ANIMATION_FRAMES) {

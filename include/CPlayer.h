@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "CEsWorldScreen.h"
+#include "CTexture.h"
 
 class CPlayer
 {
@@ -53,6 +54,7 @@ private:
     int m_nXPosition;
     int m_nYPosition;
     SDL_Rect m_recBounds;
+    CTexture m_tTexture;
 };
 
 #endif // CPLAYER_H
