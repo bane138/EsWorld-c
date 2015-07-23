@@ -71,9 +71,43 @@ void CTexture::free(void)
     }
 }
 
-void CTexture::render(CEsWorldScreen *screen, int x, int y)
+/**
+ * @brief CTexture::setAlpha
+ * Modulate alpha (transparency)
+ * @param alpha
+ */
+void CTexture::setAlpha(Uint8 alpha)
+{
+    // Modulate texture alpha
+    SDL_SetTextureAlphaMod(m_sdlTexture, alpha);
+}
+
+void CTexture::setBlendMode(SDL_BlendMode blending)
+{
+    // Set blending function
+    SDL_SetTextureBlendMode(m_sdlTexture, blending);
+}
+
+/**
+ * @brief CTexture::setColor
+ * Color modulation
+ * @param red
+ * @param gree
+ * @param blue
+ */
+void CTexture::setColor(Uint8 red, Uint8 green, Uint8 blue)
+{
+    // Modulate texture
+    SDL_SetTextureColorMod(m_sdlTexture, red, green, blue);
+}
+
+void CTexture::render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip)
 {
     // Set rendering space and render to screen
     SDL_Rect renderQuad = { x, y, m_nWidth, m_nHeight };
-    SDL_RenderCopy(screen->getRenderer(), m_sdlTexture, NULL, &renderQuad);
+    if(clip) {
+        renderQuad.w = clip->w;
+        renderQuad.h = clip->h;
+    }
+    SDL_RenderCopy(screen->getRenderer(), m_sdlTexture, clip, &renderQuad);
 }

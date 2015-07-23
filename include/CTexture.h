@@ -35,7 +35,27 @@ public:
      * @param int x
      * @param int y
      */
-    void render(CEsWorldScreen *screen, int x, int y);
+    void render(CEsWorldScreen *screen, int x, int y, SDL_Rect *clip = nullptr);
+    /**
+     * @brief setAlpha
+     * Set alpha (transparency)
+     * @param alpha
+     */
+    void setAlpha(Uint8 alpha);
+    /**
+     * @brief setBlendMode
+     * Set blending mode
+     * @param blending
+     */
+    void setBlendMode(SDL_BlendMode blending);
+    /**
+     * @brief setColor
+     * Color modulation
+     * @param red
+     * @param gree
+     * @param blue
+     */
+    void setColor(Uint8 red, Uint8 gree, Uint8 blue);
     /**
      * @brief getWidth
      * @return int

@@ -11,7 +11,44 @@
 
 #include <time.h>
 
+
 using namespace std;
+
+// helper for animation put this in a sprite class eventually
+/*bool loadMedia(CTexture *sprite, SDL_Rect *spriteClips)
+{
+    // success flag
+    bool success = true;
+
+    // Load sprite sheet texture
+    if(!sprite->loadFromFile(&screen, screen.getResPath() + "dude_walking_left.png")) {
+        std::cout << "IMG_Load error: " << SDL_GetError() << std::endl;
+        success = false;
+    } else {
+        // Set sprite clips
+        spriteClips[0].x = 0;
+        spriteClips[0].y = 0;
+        spriteClips[0].w = 64;
+        spriteClips[0].h = 205;
+
+        spriteClips[1].x = 64;
+        spriteClips[1].y = 0;
+        spriteClips[1].w = 64;
+        spriteClips[1].h = 205;
+
+        spriteClips[2].x = 128;
+        spriteClips[2].y = 0;
+        spriteClips[2].w = 64;
+        spriteClips[2].h = 205;
+
+        spriteClips[3].x = 256;
+        spriteClips[3].y = 0;
+        spriteClips[3].w = 196;
+        spriteClips[3].h = 205;
+    }
+
+    return success;
+}*/
 
 /**
  * @brief main
@@ -25,6 +62,9 @@ int main(int argc, char **argv)
     /**
      * Game loop
      */
+    const int WALKING_ANIMATION_FRAMES = 4;
+    SDL_Rect spriteClips[WALKING_ANIMATION_FRAMES];
+    int frame = 0;
     CGame game;
     SDL_Event e;
     game.startGame();
@@ -33,7 +73,33 @@ int main(int argc, char **argv)
     CDialog dialogBox2;
     CDialog dialogBox3;
     CPlayer player;
-    CTexture dude;
+    CTexture sprite;
+    // for animation
+    if(!sprite.loadFromFile(&screen, screen.getResPath() + "dude_walking_left.png")) {
+        std::cout << "IMG_Load error: " << SDL_GetError() << std::endl;
+    } else {
+        // Set sprite clips
+        spriteClips[0].x = 0;
+        spriteClips[0].y = 0;
+        spriteClips[0].w = 64;
+        spriteClips[0].h = 205;
+
+        spriteClips[1].x = 64;
+        spriteClips[1].y = 0;
+        spriteClips[1].w = 64;
+        spriteClips[1].h = 205;
+
+        spriteClips[2].x = 128;
+        spriteClips[2].y = 0;
+        spriteClips[2].w = 64;
+        spriteClips[2].h = 205;
+
+        spriteClips[3].x = 256;
+        spriteClips[3].y = 0;
+        spriteClips[3].w = 196;
+        spriteClips[3].h = 205;
+    }
+    // for animation
     player.setXPosition(100);
     player.setYPosition(100);
     time_t starttime;
@@ -94,10 +160,18 @@ int main(int argc, char **argv)
         //screen.drawScreen("color_sheet.png", 10, 10, clip);
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
-        player.drawPlayer(&screen);
-        dude.loadFromFile(&screen, screen.getResPath() + "dude.png");
-        dude.render(&screen, 100, 100);
+        //player.drawPlayer(&screen);
+        SDL_Rect* currentClip = &spriteClips[frame/4];
+        sprite.setBlendMode(SDL_BLENDMODE_BLEND);
+        //sprite.setColor(0, 0, 255);
+        //sprite.setAlpha(50);
+        sprite.render(&screen, 100,
+                      100, currentClip);
         SDL_RenderPresent(screen.getRenderer());
+        frame++;
+        if(frame / 4 >= WALKING_ANIMATION_FRAMES) {
+            frame = 0;
+        }
     }
 
     screen.deleteScreen();
