@@ -165,8 +165,8 @@ int main(int argc, char **argv)
         sprite.setBlendMode(SDL_BLENDMODE_BLEND);
         //sprite.setColor(0, 0, 255);
         //sprite.setAlpha(50);
-        sprite.render(&screen, 100,
-                      100, currentClip);
+        sprite.render(&screen,(SCREEN_WIDTH / 2) - (currentClip->w / 2),
+                      (SCREEN_HEIGHT / 2) - (currentClip->h / 2), currentClip);
         SDL_RenderPresent(screen.getRenderer());
         frame++;
         if(frame / 4 >= WALKING_ANIMATION_FRAMES) {
