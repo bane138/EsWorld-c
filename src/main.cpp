@@ -74,9 +74,19 @@ int main(int argc, char **argv)
     CDialog dialogBox1;
     CDialog dialogBox2;
     CDialog dialogBox3;
+    TTF_Font *font = NULL;
+    SDL_Color fontColor = { 0, 0, 0, 0 };
     CPlayer player;
     CTexture sprite;
     CTexture arrow;
+    CTexture text;
+    // may want a good way to load fonts posibly a text class that uses
+    // CTexture to render it
+    std::string fontFile = screen.getResPath() + "sample.ttf";
+    font = TTF_OpenFont(fontFile.c_str(), 28);
+
+    text.loadFromRenderedText(&screen, font, "Here is my text", fontColor);
+
     arrow.loadFromFile(&screen, screen.getResPath() + "arrow.png");
     // for animation
     if(!sprite.loadFromFile(&screen, screen.getResPath() + "dude_walking_left.png",
@@ -190,6 +200,7 @@ int main(int argc, char **argv)
         arrow.render(&screen,
                      300, 200,
                      NULL, degrees, NULL, flipType);
+        text.render(&screen, 10, 400);
         SDL_RenderPresent(screen.getRenderer());
         frame++;
         if(frame / 4 >= WALKING_ANIMATION_FRAMES) {

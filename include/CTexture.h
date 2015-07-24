@@ -4,6 +4,7 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "CEsWorldScreen.h"
 
 class CTexture
@@ -25,6 +26,15 @@ public:
      */
     bool loadFromFile(CEsWorldScreen *screen, std::string filePath,
                       Uint8 red = 0xFF, Uint8 green = 0xFF, Uint8 blue = 0xFF);
+    /**
+     * @brief loadFromRenderedText
+     * @param screen
+     * @param textureText
+     * @param textColor
+     * @return
+     */
+    bool loadFromRenderedText(CEsWorldScreen *screen, TTF_Font *font,
+                              std::string textureText, SDL_Color textColor);
     /**
      * @brief free
      * Free texture

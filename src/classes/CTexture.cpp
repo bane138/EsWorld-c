@@ -61,6 +61,40 @@ bool CTexture::loadFromFile(CEsWorldScreen *screen, std::string filePath,
 }
 
 /**
+ * @brief CTexture::loadFromRenderedText
+ * @param screen
+ * @param textureText
+ * @param textColor
+ */
+bool CTexture::loadFromRenderedText(CEsWorldScreen *screen, TTF_Font *font,
+                               std::string textureText, SDL_Color textColor)
+{
+    // Get rid of existing texture
+    free();
+
+    // Render text surface
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, textureText.c_str(),
+                                                    textColor);
+    if(textSurface == nullptr) {
+        std::cout << "TTF_RenderText_Solid error" << SDL_GetError() << std::endl;
+    } else {
+        // Create texture from surface pixels
+        m_sdlTexture = SDL_CreateTextureFromSurface(screen->getRenderer(), textSurface);
+        if(m_sdlTexture == nullptr) {
+            std::cout << "SDL_CreateTextureFromSurface error" << SDL_GetError() << std::endl;
+        } else {
+            // Get image dimensions
+            m_nWidth = textSurface->w;
+            m_nHeight = textSurface->h;
+        }
+        // Get rid of the old surface
+        SDL_FreeSurface(textSurface);
+    }
+
+    return m_sdlTexture != nullptr;
+}
+
+/**
  * @brief CTexture::free
  */
 void CTexture::free(void)
