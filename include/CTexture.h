@@ -24,8 +24,10 @@ public:
      * @param string filePath
      * @return bool
      */
+#ifdef _SDL_TTF_H
     bool loadFromFile(CEsWorldScreen *screen, std::string filePath,
                       Uint8 red = 0xFF, Uint8 green = 0xFF, Uint8 blue = 0xFF);
+#endif
     /**
      * @brief loadFromRenderedText
      * @param screen

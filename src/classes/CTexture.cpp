@@ -66,6 +66,7 @@ bool CTexture::loadFromFile(CEsWorldScreen *screen, std::string filePath,
  * @param textureText
  * @param textColor
  */
+#ifdef _SDL_TTF_H
 bool CTexture::loadFromRenderedText(CEsWorldScreen *screen, TTF_Font *font,
                                std::string textureText, SDL_Color textColor)
 {
@@ -93,7 +94,7 @@ bool CTexture::loadFromRenderedText(CEsWorldScreen *screen, TTF_Font *font,
 
     return m_sdlTexture != nullptr;
 }
-
+#endif
 /**
  * @brief CTexture::free
  */

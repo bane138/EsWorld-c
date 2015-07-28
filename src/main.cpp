@@ -8,47 +8,12 @@
 #include "CDialog.h"
 #include "CPlayer.h"
 #include "CTexture.h"
+#include "CButton.h"
 
 #include <time.h>
 
 
 using namespace std;
-
-// helper for animation put this in a sprite class eventually
-/*bool loadMedia(CTexture *sprite, SDL_Rect *spriteClips)
-{
-    // success flag
-    bool success = true;
-
-    // Load sprite sheet texture
-    if(!sprite->loadFromFile(&screen, screen.getResPath() + "dude_walking_left.png")) {
-        std::cout << "IMG_Load error: " << SDL_GetError() << std::endl;
-        success = false;
-    } else {
-        // Set sprite clips
-        spriteClips[0].x = 0;
-        spriteClips[0].y = 0;
-        spriteClips[0].w = 64;
-        spriteClips[0].h = 205;
-
-        spriteClips[1].x = 64;
-        spriteClips[1].y = 0;
-        spriteClips[1].w = 64;
-        spriteClips[1].h = 205;
-
-        spriteClips[2].x = 128;
-        spriteClips[2].y = 0;
-        spriteClips[2].w = 64;
-        spriteClips[2].h = 205;
-
-        spriteClips[3].x = 256;
-        spriteClips[3].y = 0;
-        spriteClips[3].w = 196;
-        spriteClips[3].h = 205;
-    }
-
-    return success;
-}*/
 
 /**
  * @brief main
@@ -62,6 +27,10 @@ int main(int argc, char **argv)
     /**
      * Game loop
      */
+    const int BUTTON_WIDTH = 300;
+    const int BUTTON_HEIGHT = 200;
+    const int TOTAL_BUTTONS = 4;
+    CButton gButtons[TOTAL_BUTTONS];
     const int WALKING_ANIMATION_FRAMES = 4;
     SDL_Rect spriteClips[WALKING_ANIMATION_FRAMES];
     int frame = 0;
@@ -136,7 +105,7 @@ int main(int argc, char **argv)
             frames = 0;
         }
 
-        std::cout << "The game is running!" << endl;
+        //std::cout << "The game is running!" << endl;
         while(SDL_PollEvent(&e)) {
             // If the user closes the window
             if(e.type == SDL_QUIT) {
@@ -182,12 +151,14 @@ int main(int argc, char **argv)
             if(e.type == SDL_MOUSEBUTTONDOWN) {
                 game.stopGame();
             }
+            for(int i = 0; i < TOTAL_BUTTONS; i++) {
+                gButtons[i].handleEvent(&e);
+            }
         }
         frames++;
         timepassed++;
         SDL_RenderClear(screen.getRenderer());
         screen.drawScreen("background.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        //screen.drawScreen("color_sheet.png", 10, 10, clip);
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
         player.drawPlayer(&screen);
@@ -201,6 +172,9 @@ int main(int argc, char **argv)
                      300, 200,
                      NULL, degrees, NULL, flipType);
         text.render(&screen, 10, 400);
+        for(int i = 0; i < TOTAL_BUTTONS; ++i) {
+            gButtons[i].render(&screen);
+        }
         SDL_RenderPresent(screen.getRenderer());
         frame++;
         if(frame / 4 >= WALKING_ANIMATION_FRAMES) {
