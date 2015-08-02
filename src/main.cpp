@@ -118,19 +118,27 @@ int main(int argc, char **argv)
                     case SDLK_w:
                         player.setYPosition(player.getYPosition() - 10);
                         break;
+                    case SDLK_UP:
+                        player.setYPosition(player.getYPosition() - 10);
+                        break;
                     case SDLK_s:
+                        player.setYPosition(player.getYPosition() + 10);
+                        break;
+                    case SDLK_DOWN:
                         player.setYPosition(player.getYPosition() + 10);
                         break;
                     case SDLK_d:
                         player.setXPosition(player.getXPosition() + 10);
                         break;
+                    case SDLK_RIGHT:
+                        player.setXPosition(player.getXPosition() + 10);
+                        degrees -= 60;
+                        break;
                     case SDLK_a:
                         player.setXPosition(player.getXPosition() - 10);
                         break;
-                    case SDLK_RIGHT:
-                        degrees -= 60;
-                        break;
                     case SDLK_LEFT:
+                        player.setXPosition(player.getXPosition() - 10);
                         degrees += 60;
                         break;
                     case SDLK_h:
@@ -150,7 +158,7 @@ int main(int argc, char **argv)
                 }
             }
             if(e.type == SDL_MOUSEBUTTONDOWN) {
-                game.stopGame();
+                //game.stopGame();
             }
             for(int i = 0; i < TOTAL_BUTTONS; i++) {
                 gButtons[i].handleEvent(&e);
