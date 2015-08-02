@@ -27,10 +27,7 @@ int main(int argc, char **argv)
     /**
      * Game loop
      */
-    const int BUTTON_WIDTH = 300;
-    const int BUTTON_HEIGHT = 200;
-    const int TOTAL_BUTTONS = 4;
-    CButton gButtons[TOTAL_BUTTONS];
+
     const int WALKING_ANIMATION_FRAMES = 4;
     SDL_Rect spriteClips[WALKING_ANIMATION_FRAMES];
     int frame = 0;
@@ -49,6 +46,10 @@ int main(int argc, char **argv)
     CTexture sprite;
     CTexture arrow;
     CTexture text;
+    CButton gButtons[TOTAL_BUTTONS];
+    for(int i = 0; i < TOTAL_BUTTONS; ++i) {
+        gButtons[i].setTexture(&screen, "button_sprite.png");
+    }
     // may want a good way to load fonts posibly a text class that uses
     // CTexture to render it
     std::string fontFile = screen.getResPath() + "sample.ttf";
@@ -157,24 +158,26 @@ int main(int argc, char **argv)
         }
         frames++;
         timepassed++;
+        /* Add all render funcions between RenderClear and RenderPresent */
         SDL_RenderClear(screen.getRenderer());
+
         screen.drawScreen("background.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         screen.drawText(to_string(fps), 10, 10);
         screen.drawText(to_string(game.getLevel()), 580, 10);
         player.drawPlayer(&screen);
         SDL_Rect* currentClip = &spriteClips[frame/4];
-        //sprite.setBlendMode(SDL_BLENDMODE_BLEND);
-        //sprite.setColor(0, 0, 255);
-        //sprite.setAlpha(50);
         sprite.render(&screen,(SCREEN_WIDTH / 2) - (currentClip->w / 2),
                       (SCREEN_HEIGHT / 2) - (currentClip->h / 2), currentClip);
         arrow.render(&screen,
                      300, 200,
                      NULL, degrees, NULL, flipType);
+
         text.render(&screen, 10, 400);
+
         for(int i = 0; i < TOTAL_BUTTONS; ++i) {
             gButtons[i].render(&screen);
         }
+
         SDL_RenderPresent(screen.getRenderer());
         frame++;
         if(frame / 4 >= WALKING_ANIMATION_FRAMES) {

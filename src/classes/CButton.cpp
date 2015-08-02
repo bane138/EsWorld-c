@@ -3,12 +3,33 @@
 /**
  * @brief CButton::CButton
  */
-CButton::CButton(void)
+CButton::CButton()
 {
     m_ptPosition.x = 0;
     m_ptPosition.y = 0;
 
     m_nCurrentSprite = BUTTON_SPRITE_MOUSE_OUT;
+
+    // Moust out rec
+    m_recSpriteClips[0].x = 0;
+    m_recSpriteClips[0].y = 0;
+    m_recSpriteClips[0].w = BUTTON_WIDTH;
+    m_recSpriteClips[0].h = BUTTON_HEIGHT;
+    // Mouse over rec
+    m_recSpriteClips[1].x = 170;
+    m_recSpriteClips[1].y = 0;
+    m_recSpriteClips[1].w = BUTTON_WIDTH;
+    m_recSpriteClips[1].h = BUTTON_HEIGHT;
+    // mouse down rec
+    m_recSpriteClips[2].x = 0;
+    m_recSpriteClips[2].y = 140;
+    m_recSpriteClips[2].w = BUTTON_WIDTH;
+    m_recSpriteClips[2].h = BUTTON_HEIGHT;
+    // mouse up rec
+    m_recSpriteClips[3].x = 170;
+    m_recSpriteClips[3].y = 140;
+    m_recSpriteClips[3].w = BUTTON_WIDTH;
+    m_recSpriteClips[3].h = BUTTON_HEIGHT;
 }
 
 /**
@@ -31,10 +52,22 @@ void CButton::setPosition(int x, int y)
 }
 
 /**
+ * @brief CButton::setTexture
+ * @param screen
+ * @param file
+ */
+void CButton::setTexture(CEsWorldScreen *screen, std::string file)
+{
+    m_tButtonSpriteTexture.loadFromFile(
+                screen,
+                screen->getResPath() + file.c_str());
+}
+
+/**
  * @brief CButton::handleEvent
  * @param e
  */
-void CButton::handleEvent(SDL_Event *e)
+void CButton::handleEvent(SDL_Event* e)
 {
     // If mouse event happened
     if(e->type == SDL_MOUSEMOTION || e->type == SDL_MOUSEBUTTONDOWN ||
@@ -79,5 +112,5 @@ void CButton::handleEvent(SDL_Event *e)
 void CButton::render(CEsWorldScreen* screen)
 {
     // Show current button sprite
-    m_tCurrentButtonSpriteTexture.render(screen, m_ptPosition.x, m_ptPosition.y, &m_recSpriteClips[m_nCurrentSprite]);
+    m_tButtonSpriteTexture.render(screen, m_ptPosition.x, m_ptPosition.y, &m_recSpriteClips[m_nCurrentSprite]);
 }
