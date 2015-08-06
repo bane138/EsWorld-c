@@ -19,8 +19,10 @@ CSound::~CSound(void)
 
 void CSound::loadMusic(std::string file)
 {
-    m_mixMusic = Mix_LoadMUS()
-    if()
+    m_mixMusic = Mix_LoadMUS(getResPath() + 'music.wav');
+    if(m_mixMusic == NULL) {
+        std::cout << "Mix_LoadMUS error: " << Mix_GetError() << std:endl;
+    }
 }
 
 void CSound::loadSound(std::string file)
