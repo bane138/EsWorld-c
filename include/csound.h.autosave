@@ -1,0 +1,21 @@
+#ifndef CSOUND_H
+#define CSOUND_H
+
+#define <SDL.h>
+#define <SDL_mixer.h>
+
+class CSound 
+{
+public:
+    CSound(void);
+    ~CSound(void);
+    
+    void loadMusic(void);
+    void loadSound(void);
+private:
+    Mix_Music m_mixMusic;
+    Mix_Chunck m_mixSound;
+};
+
+#endif // CSOUND_H
+
