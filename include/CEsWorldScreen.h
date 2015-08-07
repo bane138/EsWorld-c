@@ -6,6 +6,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
+// refactor to a config file
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 #define RESOURCE_PATH "World001"
