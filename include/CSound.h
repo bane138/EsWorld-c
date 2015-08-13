@@ -13,8 +13,8 @@ public:
     CSound(void);
     ~CSound(void);
 
-    void loadMusic(const char* file);
-    void loadSound(const char* file);
+    bool loadMusic(const char* file);
+    bool loadSound(const char* file);
 private:
     std::string getResPath(void);
 
