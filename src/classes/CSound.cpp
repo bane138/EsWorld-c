@@ -3,8 +3,8 @@
 
 CSound::CSound(void)
 {
-    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        std::cout << "SDL_Init error: " << SDL_GetError() << std::endl;
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        std::cout << "SDL_Mixer error: " << Mix_GetError() << std::endl;
     }
 }
 

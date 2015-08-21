@@ -52,6 +52,7 @@ int main(int argc, char **argv)
     std::string music = screen.getResPath + "beat.wave";
     gMusic.loadMusic(music.c_str());
     CSound gHigh;
+    std::string 
     gHigh.loadSound(screen.getResPath() + "high.wav");
     CSound gMedium;
     gMedium.loadSound(screen.getResPath() + "medium.wav");
